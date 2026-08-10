@@ -82,7 +82,7 @@ export default async function HomePage() {
           <Reveal delay={0.2} className="relative">
             <div className="relative mx-auto max-w-md">
               <div aria-hidden className="absolute -inset-3 rounded-[2rem] border border-gold-500/40" />
-              <div className="relative overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60">
                 <Image
                   src={data.homepage.heroImage}
                   alt="Executives of the Afemhai Descendant Forum at an official gathering"
