@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* ---- Afemhai Descendant Forum design tokens (from the official logo) ---- */
+
+@theme {
+  --color-navy-950: #060f22;
+  --color-navy-900: #081c3c;
+  --color-navy-800: #0b2447;
+  --color-navy-700: #123363;
+  --color-navy-600: #1a4380;
+  --color-navy-100: #dbe6f5;
+
+  --color-gold-300: #f8d878;
+  --color-gold-400: #f2c14f;
+  --color-gold-500: #f2b705; /* brand gold */
+  --color-gold-600: #d99a1f;
+  --color-gold-700: #a86f0f;
+
+  --color-cream-50: #faf6ee;
+  --color-cream-100: #f4ecdb;
+  --color-cream-200: #e8dab8;
+
+  --color-leaf-600: #1e5c3b;
+  --color-leaf-700: #174a2f;
+  --color-leaf-800: #113a25;
+
+  --color-ember-500: #c8332d; /* unity-figure red accent */
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-cream-50);
+  color: #1d2733;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-gold-500);
+  color: var(--color-navy-900);
+}
+
+/* ---- Utilities ---- */
+
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 640px) {
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Gold divider ornament */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-500), transparent);
+}
+
+/* Kente-inspired step border for hero/CTA bands */
+.heritage-border {
+  background-image:
+    repeating-linear-gradient(45deg, var(--color-gold-500) 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(-45deg, var(--color-navy-700) 0 6px, transparent 6px 12px);
+  background-size: 24px 24px, 24px 24px;
+  background-blend-mode: normal;
+}
+
+/* Respect reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visibility for a11y */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
