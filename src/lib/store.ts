@@ -52,12 +52,12 @@ export async function dbWrite(json: string): Promise<void> {
         updated_at TIMESTAMP DEFAULT NOW()
       )
     `;
-    const rows = await sql`SELECT id FROM site_data WHERE id = 1`;
-    if (rows.length) {
-      await sql`UPDATE site_data SET data = ${json}::jsonb, updated_at = NOW() WHERE id = 1`;
-    } else {
-      await sql`INSERT INTO site_data (id, data) VALUES (1, ${json}::jsonb)`;
-    }
+    // Upsert so concurrent first-run seeds can't race on a duplicate key.
+    await sql`
+      INSERT INTO site_data (id, data, updated_at)
+      VALUES (1, ${json}::jsonb, NOW())
+      ON CONFLICT (id) DO UPDATE SET data = EXCLUDED.data, updated_at = NOW()
+    `;
     return;
   }
 

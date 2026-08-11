@@ -43,7 +43,11 @@ async function loadRaw(): Promise<SiteData | null> {
 
 async function ensureSeeded(): Promise<SiteData> {
   const existing = await loadRaw();
-  if (existing) return existing;
+  // Only trust a row that actually looks like a full site document — a
+  // partial/foreign row (e.g. a probe write) must not block real seeding.
+  if (existing && existing.general?.orgName && existing.settings?.adminPasswordHash) {
+    return existing;
+  }
 
   const seeded: SiteData = {
     ...DEFAULT_DATA,
