@@ -231,3 +231,10 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Never allow horizontal scroll from decorative layers (orbs, marquee) —
+   clip instead of hidden so position:sticky keeps working. */
+html,
+body {
+  overflow-x: clip;
+}

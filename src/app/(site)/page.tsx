@@ -7,6 +7,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import HeritagePattern from "@/components/ui/HeritagePattern";
 import StatsBand from "@/components/home/StatsBand";
 import AutoplayVideo from "@/components/coconut/AutoplayVideo";
+import Countdown from "@/components/home/Countdown";
 import { formatDate } from "@/lib/utils";
 
 const PILLAR_ICONS: Record<string, typeof Handshake> = {
@@ -230,6 +231,11 @@ export default async function HomePage() {
                     </span>
                   )}
                 </div>
+                {featuredEvent.date && (
+                  <div className="mt-6">
+                    <Countdown target={featuredEvent.date} />
+                  </div>
+                )}
               </Reveal>
               <Reveal delay={0.2}>
                 <Link

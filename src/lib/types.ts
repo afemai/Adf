@@ -191,6 +191,8 @@ export interface ContactContent {
   formTitle: string;
   formText: string;
   mapUrl: string;
+  mapLat: string;
+  mapLng: string;
   messages: ContactMessage[];
 }
 

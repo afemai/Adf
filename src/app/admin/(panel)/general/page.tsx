@@ -45,6 +45,8 @@ const SECTIONS: SectionDef[] = [
       { key: "formTitle", label: "Form title", type: "text" },
       { key: "formText", label: "Form help text", type: "text" },
       { key: "mapUrl", label: "Map override URL (optional)", type: "url", help: "Leave empty to auto-point Google Maps at the headquarters address" },
+      { key: "mapLat", label: "Map latitude (optional, e.g. 7.0784)", type: "text", help: "Exact pin if the address doesn't resolve — find it on maps.google.com" },
+      { key: "mapLng", label: "Map longitude (optional, e.g. 6.2832)", type: "text" },
     ],
   },
 ];

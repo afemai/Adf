@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Play, Volume2, VolumeX, Maximize2 } from "lucide-react";
+import { Play, Maximize2 } from "lucide-react";
 
-// Muted autoplay while the video is on screen (industry footage carries an
-// AI voice-over, so sound stays OFF by default); the visitor can unmute,
-// go fullscreen, or tap to pause/play. Pauses when scrolled out of view.
+// Silent autoplay while the video is on screen. The factory footage carries
+// an AI voice-over, so sound is deliberately removed (no toggle) — visitors
+// see the industrial process, not the narration. Pauses when scrolled away.
 export default function AutoplayVideo({
   src,
   label,
@@ -18,7 +18,6 @@ export default function AutoplayVideo({
   const ref = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
     const el = wrapRef.current;
@@ -44,8 +43,6 @@ export default function AutoplayVideo({
     const v = ref.current;
     if (!v) return;
     if (v.paused) {
-      v.muted = false;
-      setMuted(false);
       void v.play();
       setPlaying(true);
     } else {
@@ -75,7 +72,7 @@ export default function AutoplayVideo({
         <button
           type="button"
           onClick={toggle}
-          aria-label={`Play ${label} with sound`}
+          aria-label={`Play ${label}`}
           className="absolute inset-0 flex items-center justify-center bg-navy-950/35 transition-colors hover:bg-navy-950/15"
         >
           <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gold-500 text-navy-900 shadow-xl transition-transform hover:scale-110">
@@ -84,20 +81,8 @@ export default function AutoplayVideo({
         </button>
       )}
 
-      {/* controls */}
+      {/* fullscreen only — sound is intentionally removed */}
       <div className="absolute right-3 top-3 flex gap-2">
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            setMuted((m) => !m);
-            if (ref.current) ref.current.muted = !ref.current.muted;
-          }}
-          aria-label={muted ? "Unmute" : "Mute"}
-          className="rounded-full bg-navy-950/70 p-2 text-white backdrop-blur transition-colors hover:bg-navy-900"
-        >
-          {muted ? <VolumeX className="h-4 w-4" aria-hidden /> : <Volume2 className="h-4 w-4" aria-hidden />}
-        </button>
         <button
           type="button"
           onClick={(e) => {

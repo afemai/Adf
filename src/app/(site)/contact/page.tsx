@@ -142,7 +142,9 @@ export default async function ContactPage() {
                   title={`Map — ${g.address}`}
                   src={
                     c.mapUrl ||
-                    `https://www.google.com/maps?q=${encodeURIComponent(g.address)}&z=15&output=embed`
+                    (c.mapLat && c.mapLng
+                      ? `https://www.google.com/maps?q=${c.mapLat},${c.mapLng}&z=16&output=embed`
+                      : `https://www.google.com/maps?q=${encodeURIComponent(g.address)}&z=15&output=embed`)
                   }
                   className="h-72 w-full border-0 bg-navy-100"
                   loading="lazy"
