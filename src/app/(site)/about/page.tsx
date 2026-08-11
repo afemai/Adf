@@ -5,7 +5,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import HeritagePattern from "@/components/ui/HeritagePattern";
 import { MapPin, Shield, Landmark, ScrollText, Quote } from "lucide-react";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return pageMetadata("about");

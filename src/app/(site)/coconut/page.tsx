@@ -8,7 +8,7 @@ import HeritagePattern from "@/components/ui/HeritagePattern";
 import PlantationShowcase from "@/components/coconut/PlantationShowcase";
 import AutoplayVideo from "@/components/coconut/AutoplayVideo";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return pageMetadata("coconut");

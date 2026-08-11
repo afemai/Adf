@@ -6,7 +6,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import HeritagePattern from "@/components/ui/HeritagePattern";
 import { initials } from "@/lib/utils";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return pageMetadata("leadership");

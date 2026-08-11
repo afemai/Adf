@@ -41,3 +41,5 @@ next-env.d.ts
 /_qa/
 /_qa_tmp/
 /dev.log
+.vercel
+.env*

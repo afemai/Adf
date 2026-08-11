@@ -5,7 +5,7 @@ import Reveal from "@/components/motion/Reveal";
 import ContactForm from "@/components/contact/ContactForm";
 import { WhatsAppIcon } from "@/components/layout/WhatsAppButton";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return pageMetadata("contact");

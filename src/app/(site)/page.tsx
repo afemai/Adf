@@ -16,7 +16,7 @@ const PILLAR_ICONS: Record<string, typeof Handshake> = {
   sprout: Sprout,
 };
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const data = await loadPublicData();
