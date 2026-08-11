@@ -26,7 +26,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "lgas", label: "Local Government Areas", type: "array",
-        itemTitle: (it) => String(it.name || "LGA"),
         itemFields: [
           { key: "name", label: "Name", type: "text" },
           { key: "headquarters", label: "Headquarters", type: "text" },
@@ -44,7 +43,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "timeline", label: "Timeline entries", type: "array",
-        itemTitle: (it) => String(it.era || "Era"),
         itemFields: [
           { key: "era", label: "Era / period", type: "text" },
           { key: "text", label: "What happened", type: "textarea", rows: 2 },
@@ -58,7 +56,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "aims", label: "Aims", type: "array",
-        itemTitle: (it) => String(it.title || "Aim"),
         itemFields: [
           { key: "title", label: "Short title", type: "text" },
           { key: "text", label: "Full aim text", type: "textarea", rows: 3 },

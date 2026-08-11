@@ -16,8 +16,15 @@ export default function SectionHeader({
   return (
     <div className={cn("max-w-3xl", align === "center" ? "mx-auto text-center" : "text-left")}>
       {eyebrow && (
-        <p className={cn("mb-3 text-xs font-bold uppercase tracking-[0.3em]", light ? "text-gold-400" : "text-gold-700")}>
+        <p
+          className={cn(
+            "mb-3 inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.3em]",
+            light ? "text-gold-400" : "text-gold-700"
+          )}
+        >
+          {align === "center" && <span aria-hidden className="hidden h-px w-6 bg-gold-500/60 sm:block" />}
           {eyebrow}
+          {align === "center" && <span aria-hidden className="hidden h-px w-6 bg-gold-500/60 sm:block" />}
         </p>
       )}
       <h2
@@ -33,7 +40,13 @@ export default function SectionHeader({
           {description}
         </p>
       )}
-      <div className={cn("gold-divider mt-6", align === "center" ? "mx-auto w-24" : "w-24")} aria-hidden />
+      <div
+        className={cn(
+          "mt-6 h-1 rounded-full bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600",
+          align === "center" ? "mx-auto w-24" : "w-24"
+        )}
+        aria-hidden
+      />
     </div>
   );
 }

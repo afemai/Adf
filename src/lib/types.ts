@@ -207,10 +207,18 @@ export interface ThemeSettings {
   fontBody: string;
 }
 
+export type SeasonalMode = "none" | "christmas" | "newyear" | "independence" | "easter";
+
+export interface SeasonalSettings {
+  mode: SeasonalMode;
+  message: string;
+}
+
 export interface AppSettings {
   adminPasswordHash: string;
   maintenanceMode: boolean;
   allowContactForm: boolean;
+  seasonal: SeasonalSettings;
 }
 
 export interface SiteData {

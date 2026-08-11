@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Award, Mail, Phone, Medal, Users } from "lucide-react";
 import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
@@ -31,11 +30,12 @@ function LeaderCard({
     <div className="group flex h-full flex-col rounded-3xl border border-navy-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-navy-900/10">
       <div className="flex items-center gap-4">
         {image ? (
-          <Image
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
             src={image}
             alt={`Portrait of ${name}`}
-            width={72}
-            height={72}
+            loading="lazy"
+            decoding="async"
             className="h-[4.5rem] w-[4.5rem] rounded-2xl object-cover ring-2 ring-gold-500/50"
           />
         ) : (
@@ -169,12 +169,13 @@ export default async function LeadershipPage() {
                   className="group relative block overflow-hidden rounded-2xl bg-navy-100 shadow-sm transition-shadow hover:shadow-xl"
                 >
                   <div className="relative aspect-[4/5]">
-                    <Image
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                       src={g.url}
                       alt={g.caption}
-                      fill
-                      sizes="(max-width: 640px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/85 to-transparent p-4 pt-10">

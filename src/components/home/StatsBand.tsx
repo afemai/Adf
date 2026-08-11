@@ -45,13 +45,16 @@ function CountUp({ value, suffix }: { value: string; suffix?: string }) {
 export default function StatsBand({ stats }: { stats: StatItem[] }) {
   return (
     <section aria-label="Key figures" className="bg-navy-900">
+      <div className="heritage-border h-1" aria-hidden />
       <div className="container-site grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:grid-cols-4 lg:py-14">
         {stats.map((s, i) => (
-          <div key={s.label} className="text-center">
-            <p className="font-display text-4xl font-bold text-gold-500 sm:text-5xl">
+          <div key={s.label} className="group text-center">
+            <p className="text-gold-gradient font-display text-4xl font-bold sm:text-5xl">
               <CountUp value={s.value} />
             </p>
-            <p className="mt-2 text-xs uppercase tracking-[0.18em] text-cream-100/70 sm:text-sm">{s.label}</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.18em] text-cream-100/70 transition-colors group-hover:text-gold-400 sm:text-sm">
+              {s.label}
+            </p>
             {i < stats.length - 1 && null}
           </div>
         ))}

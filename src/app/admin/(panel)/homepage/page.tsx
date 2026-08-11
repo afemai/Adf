@@ -33,7 +33,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "stats", label: "Stats", type: "array",
-        itemTitle: (it) => `${it.value || "?"} — ${it.label || "stat"}`,
         itemFields: [
           { key: "value", label: "Value", type: "text", placeholder: "6" },
           { key: "label", label: "Label", type: "text", placeholder: "Local Government Areas" },
@@ -49,7 +48,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "pillars", label: "Pillars", type: "array",
-        itemTitle: (it) => String(it.title || "Pillar"),
         itemFields: [
           { key: "title", label: "Title", type: "text" },
           { key: "description", label: "Description", type: "textarea", rows: 3 },

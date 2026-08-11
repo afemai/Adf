@@ -12,11 +12,30 @@ export type FieldDef =
   | { key: string; label: string; type: "lines"; help?: string; rows?: number; placeholder?: string }
   | { key: string; label: string; type: "color"; help?: string }
   | { key: string; label: string; type: "toggle"; help?: string }
+  | { key: string; label: string; type: "select"; help?: string; placeholder?: string; options: { value: string; label: string }[] }
   | { key: string; label: string; type: "image"; help?: string }
-  | { key: string; label: string; type: "array"; help?: string; itemTitle?: (item: Record<string, unknown>, index: number) => string; itemFields: FieldDef[] };
+  | { key: string; label: string; type: "array"; help?: string; itemFields: FieldDef[] };
 
 export const inputCls =
   "w-full rounded-xl border border-navy-200 bg-white px-4 py-2.5 text-sm text-navy-900 placeholder:text-slate-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-gold-500/40 transition";
+
+// Array item titles are derived client-side (no functions cross the
+// server/client boundary in Next.js App Router). Prefers a name-like field,
+// then the first non-empty text field.
+function deriveTitle(item: Record<string, unknown>, itemFields: FieldDef[], i: number): string {
+  const preferred = ["name", "title", "label", "value", "headline", "era", "caption"];
+  for (const key of preferred) {
+    const v = item[key];
+    if (typeof v === "string" && v.trim()) return v.trim();
+  }
+  for (const f of itemFields) {
+    if (f.type === "text") {
+      const v = item[f.key];
+      if (typeof v === "string" && v.trim()) return v.trim();
+    }
+  }
+  return `Item ${i + 1}`;
+}
 
 export function FieldLabel({ label, help }: { label: string; help?: string }) {
   return (
@@ -119,14 +138,12 @@ export function ArrayEditor({
   help,
   items,
   itemFields,
-  itemTitle,
   onChange,
 }: {
   label: string;
   help?: string;
   items: Array<Record<string, unknown>>;
   itemFields: FieldDef[];
-  itemTitle?: (item: Record<string, unknown>, index: number) => string;
   onChange: (items: Array<Record<string, unknown>>) => void;
 }) {
   const isStringItems = items.length > 0 && items.every((it) => typeof it === "string");
@@ -167,12 +184,12 @@ export function ArrayEditor({
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="flex items-center gap-2 text-sm font-bold text-navy-800">
                 <GripVertical className="h-4 w-4 text-slate-400" aria-hidden />
-                {itemTitle ? itemTitle(item, i) : `Item ${i + 1}`}
+                {deriveTitle(item, itemFields, i)}
               </p>
               <div className="flex items-center gap-1">
-                <button type="button" onClick={() => move(i, -1)} disabled={i === 0} aria-label={`Move ${itemTitle ? itemTitle(item, i) : "item"} up`} className="rounded-lg px-2 py-1 text-xs font-bold text-slate-500 hover:bg-navy-100 disabled:opacity-30">↑</button>
-                <button type="button" onClick={() => move(i, 1)} disabled={i === items.length - 1} aria-label={`Move ${itemTitle ? itemTitle(item, i) : "item"} down`} className="rounded-lg px-2 py-1 text-xs font-bold text-slate-500 hover:bg-navy-100 disabled:opacity-30">↓</button>
-                <button type="button" onClick={() => remove(i)} aria-label={`Remove ${itemTitle ? itemTitle(item, i) : "item"}`} className="ml-1 rounded-lg bg-ember-500/10 px-2.5 py-1 text-xs font-bold text-ember-500 hover:bg-ember-500/20">
+                <button type="button" onClick={() => move(i, -1)} disabled={i === 0} aria-label={`Move ${deriveTitle(item, itemFields, i)} up`} className="rounded-lg px-2 py-1 text-xs font-bold text-slate-500 hover:bg-navy-100 disabled:opacity-30">↑</button>
+                <button type="button" onClick={() => move(i, 1)} disabled={i === items.length - 1} aria-label={`Move ${deriveTitle(item, itemFields, i)} down`} className="rounded-lg px-2 py-1 text-xs font-bold text-slate-500 hover:bg-navy-100 disabled:opacity-30">↓</button>
+                <button type="button" onClick={() => remove(i)} aria-label={`Remove ${deriveTitle(item, itemFields, i)}`} className="ml-1 rounded-lg bg-ember-500/10 px-2.5 py-1 text-xs font-bold text-ember-500 hover:bg-ember-500/20">
                   Remove
                 </button>
               </div>
@@ -238,7 +255,7 @@ export function ArrayEditor({
         className="inline-flex items-center gap-1.5 rounded-xl border-2 border-dashed border-navy-300 px-4 py-2.5 text-sm font-semibold text-navy-800 hover:border-gold-500 hover:text-gold-700"
       >
         <Plus className="h-4 w-4" aria-hidden />
-        Add {itemTitle ? label : "item"}
+        Add item
       </button>
     </div>
   );

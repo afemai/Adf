@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { FacebookIcon, InstagramIcon, XIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
-import type { GeneralInfo } from "@/lib/types";
+import SeasonalLogoOverlay from "@/components/layout/SeasonalLogoOverlay";
+import type { GeneralInfo, SeasonalMode } from "@/lib/types";
 
-export default function Footer({ general }: { general: GeneralInfo }) {
+export default function Footer({ general, seasonalMode = "none" }: { general: GeneralInfo; seasonalMode?: SeasonalMode }) {
   const year = new Date().getFullYear();
   const socials = general.socials;
   const hasSocials =
@@ -16,8 +17,11 @@ export default function Footer({ general }: { general: GeneralInfo }) {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/brand/logo.jpeg" alt="" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold-500/70" width={48} height={48} />
+              <span className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/brand/logo.jpeg" alt="" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold-500/70" width={48} height={48} />
+                <SeasonalLogoOverlay mode={seasonalMode} />
+              </span>
               <div>
                 <p className="font-display text-lg font-semibold text-white">{general.orgName}</p>
                 <p className="text-xs uppercase tracking-[0.25em] text-gold-400">{general.tagline}</p>

@@ -24,8 +24,6 @@ const SECTIONS: SectionDef[] = [
     path: "general",
     fields: [
       { key: "address", label: "Headquarters address", type: "textarea", rows: 2 },
-      { key: "phones", label: "Phone numbers", type: "array", itemTitle: (it, i) => `Phone ${i + 1}: ${it.value || ""}`, itemFields: [{ key: "value", label: "Phone", type: "text", placeholder: "+234 …" }] },
-      { key: "emails", label: "Email addresses", type: "array", itemTitle: (it, i) => `Email ${i + 1}: ${it.value || ""}`, itemFields: [{ key: "value", label: "Email", type: "text" }] },
       { key: "socials.facebook", label: "Facebook URL", type: "url" },
       { key: "socials.instagram", label: "Instagram URL", type: "url" },
       { key: "socials.twitter", label: "X (Twitter) URL", type: "url" },

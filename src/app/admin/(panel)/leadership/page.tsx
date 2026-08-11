@@ -27,7 +27,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "leaders", label: "Leaders", type: "array",
-        itemTitle: (it) => String(it.name || "Leader"),
         itemFields: [
           { key: "name", label: "Full name", type: "text" },
           { key: "title", label: "Title / role", type: "text" },
@@ -47,7 +46,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "gallery", label: "Gallery images", type: "array",
-        itemTitle: (it) => String((it as Record<string, unknown>).caption || "Photo"),
         itemFields: [
           { key: "url", label: "Image", type: "image" },
           { key: "caption", label: "Caption", type: "text" },

@@ -27,7 +27,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "products", label: "Products", type: "array",
-        itemTitle: (it) => String(it.name || "Product"),
         itemFields: [
           { key: "name", label: "Product name", type: "text" },
           { key: "category", label: "Category", type: "text", help: "Must match one of the four categories above" },

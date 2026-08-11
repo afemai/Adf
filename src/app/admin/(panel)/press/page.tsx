@@ -11,7 +11,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "items", label: "Press items", type: "array",
-        itemTitle: (it) => String(it.headline || "Article"),
         itemFields: [
           { key: "source", label: "Publication", type: "text" },
           { key: "headline", label: "Headline", type: "text" },

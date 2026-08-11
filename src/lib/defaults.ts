@@ -361,7 +361,6 @@ export const DEFAULT_DATA: SiteData = {
       { id: "g7", url: "/images/leader-6.jpg", caption: "ADF Leadership portrait" },
       { id: "g8", url: "/images/leader-7.jpg", caption: "ADF women's wing" },
       { id: "g9", url: "/images/leader-8.jpg", caption: "ADF Leadership portrait" },
-      { id: "g10", url: "/images/letter.jpg", caption: "Official ADF correspondence — Ambassador of Afemai Land investiture" },
     ],
   },
   contact: {
@@ -425,6 +424,10 @@ export const DEFAULT_DATA: SiteData = {
     adminPasswordHash: "",
     maintenanceMode: false,
     allowContactForm: true,
+    seasonal: {
+      mode: "none",
+      message: "",
+    },
   },
   updatedAt: new Date().toISOString(),
 };

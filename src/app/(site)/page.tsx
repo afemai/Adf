@@ -25,9 +25,11 @@ export default async function HomePage() {
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden bg-navy-900">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold-500/15 blur-3xl" />
-          <div className="absolute bottom-0 -left-24 h-80 w-80 rounded-full bg-navy-600/40 blur-3xl" />
-          <svg className="absolute inset-0 h-full w-full opacity-[0.06]" aria-hidden>
+          {/* aurora orbs */}
+          <div className="animate-aurora absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-gold-500/20 blur-3xl" />
+          <div className="animate-aurora absolute bottom-0 -left-24 h-96 w-96 rounded-full bg-leaf-600/30 blur-3xl" style={{ animationDelay: "-6s" }} />
+          <div className="animate-aurora absolute top-1/3 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-navy-500/40 blur-3xl" style={{ animationDelay: "-12s" }} />
+          <svg className="absolute inset-0 h-full w-full opacity-[0.07]" aria-hidden>
             <defs>
               <pattern id="adf-grid" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M40 0H0v40" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -37,16 +39,31 @@ export default async function HomePage() {
           </svg>
         </div>
 
-        <div className="container-site relative grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+        <div className="container-site relative grid items-center gap-14 py-16 lg:grid-cols-2 lg:py-28">
           <div>
             <Reveal>
-              <p className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-gold-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
-                <BadgeCheck className="h-4 w-4" aria-hidden />
-                {data.homepage.heroBadge}
-              </p>
+              <div className="flex flex-col items-start gap-5">
+                {/* Logo medallion with rotating ring */}
+                <div className="relative h-24 w-24 sm:h-28 sm:w-28">
+                  <span aria-hidden className="animate-spin-slow absolute -inset-2 rounded-full border-2 border-dashed border-gold-500/60" />
+                  <span aria-hidden className="animate-glow-pulse absolute -inset-4 rounded-full bg-gold-500/15 blur-xl" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/brand/logo.jpeg"
+                    alt="Afemhai Descendant Forum emblem"
+                    className="relative h-full w-full rounded-full object-cover ring-2 ring-gold-500/70 shadow-xl shadow-gold-500/20"
+                    width={112}
+                    height={112}
+                  />
+                </div>
+                <p className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-gold-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
+                  <BadgeCheck className="h-4 w-4" aria-hidden />
+                  {data.homepage.heroBadge}
+                </p>
+              </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.12] text-white text-balance sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.1] text-white text-balance sm:text-5xl lg:text-[3.4rem]">
                 {data.homepage.heroTitle}
               </h1>
             </Reveal>
@@ -56,24 +73,25 @@ export default async function HomePage() {
               </p>
             </Reveal>
             <Reveal delay={0.24}>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-9 flex flex-wrap items-center gap-4">
                 <Link
                   href={data.homepage.ctaPrimary.link}
-                  className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-sm font-bold text-navy-900 shadow-lg shadow-gold-500/25 transition-all hover:bg-gold-400 hover:shadow-xl active:scale-[0.98]"
+                  className="btn-shimmer inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-gold-400 to-gold-600 px-8 py-4 text-sm font-bold text-navy-900 shadow-lg shadow-gold-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gold-500/40 active:scale-[0.98]"
                 >
                   {data.homepage.ctaPrimary.text}
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
                 <Link
                   href={data.homepage.ctaSecondary.link}
-                  className="inline-flex items-center gap-2 rounded-full border border-cream-100/30 px-7 py-3.5 text-sm font-semibold text-cream-50 transition-colors hover:border-gold-400 hover:text-gold-400"
+                  className="inline-flex items-center gap-2 rounded-full border border-cream-100/30 px-7 py-3.5 text-sm font-semibold text-cream-50 transition-colors hover:border-gold-400 hover:bg-gold-500/10 hover:text-gold-400"
                 >
                   {data.homepage.ctaSecondary.text}
                 </Link>
               </div>
             </Reveal>
             <Reveal delay={0.32}>
-              <p className="mt-8 text-xs uppercase tracking-[0.25em] text-cream-100/50">
+              <p className="mt-9 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-cream-100/50">
+                <BadgeCheck className="h-4 w-4 text-gold-500/80" aria-hidden />
                 Incorporated with the CAC · Reg. No. {data.general.regNo} · {data.general.incDate}
               </p>
             </Reveal>
@@ -81,18 +99,19 @@ export default async function HomePage() {
 
           <Reveal delay={0.2} className="relative">
             <div className="relative mx-auto max-w-md">
-              <div aria-hidden className="absolute -inset-3 rounded-[2rem] border border-gold-500/40" />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60">
+              <span aria-hidden className="animate-glow-pulse absolute -inset-4 rounded-[2.5rem] bg-gold-500/10 blur-2xl" />
+              <div aria-hidden className="animate-float-slow absolute -inset-3 rounded-[2rem] border border-gold-500/40" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60 ring-1 ring-gold-500/30">
                 <Image
                   src={data.homepage.heroImage}
                   alt="Executives of the Afemhai Descendant Forum at an official gathering"
                   fill
                   sizes="(max-width: 768px) 100vw, 460px"
-                  className="object-cover"
+                  className="animate-ken-burns object-cover"
                   priority
                 />
-                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-navy-950/70 px-5 py-4 backdrop-blur-md">
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/10 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/10 bg-navy-950/75 px-5 py-4 backdrop-blur-md">
                   <p className="font-display text-lg font-semibold text-white leading-snug">{data.general.tagline}</p>
                   <p className="mt-0.5 text-xs text-cream-100/70">{data.general.philosophy}</p>
                 </div>

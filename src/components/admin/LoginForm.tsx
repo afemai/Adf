@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Loader2, KeyRound } from "lucide-react";
+import { Loader2, KeyRound, Eye, EyeOff } from "lucide-react";
 
 export default function LoginForm() {
   const router = useRouter();
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
   const [busy, setBusy] = useState(false);
 
   async function onSubmit(e: React.FormEvent) {
@@ -18,7 +19,7 @@ export default function LoginForm() {
       const res = await fetch("/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ password: password.trim() }),
       });
       if (res.ok) {
         toast.success("Welcome back!");
@@ -39,16 +40,26 @@ export default function LoginForm() {
     <form onSubmit={onSubmit} className="mt-8 space-y-4">
       <label className="block">
         <span className="text-xs font-bold uppercase tracking-wider text-navy-800">Admin password</span>
-        <input
-          type="password"
-          required
-          autoFocus
-          minLength={8}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter the admin password"
-          className="mt-2 w-full rounded-xl border border-navy-200 bg-white px-4 py-3.5 text-sm text-navy-900 placeholder:text-slate-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
-        />
+        <div className="relative mt-2">
+          <input
+            type={show ? "text" : "password"}
+            required
+            autoFocus
+            minLength={8}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter the admin password"
+            className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3.5 pr-12 text-sm text-navy-900 placeholder:text-slate-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
+          />
+          <button
+            type="button"
+            onClick={() => setShow((s) => !s)}
+            aria-label={show ? "Hide password" : "Show password"}
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-400 hover:bg-navy-100 hover:text-navy-800"
+          >
+            {show ? <EyeOff className="h-4.5 w-4.5" aria-hidden /> : <Eye className="h-4.5 w-4.5" aria-hidden />}
+          </button>
+        </div>
       </label>
       <button
         type="submit"

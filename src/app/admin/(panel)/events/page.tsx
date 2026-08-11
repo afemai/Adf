@@ -11,10 +11,6 @@ const SECTIONS: SectionDef[] = [
     fields: [
       {
         key: "events", label: "Events", type: "array",
-        itemTitle: (it) => {
-          const t = String(it.title || "Event");
-          return it.featured ? `★ ${t}` : t;
-        },
         itemFields: [
           { key: "title", label: "Title", type: "text" },
           { key: "description", label: "Description", type: "textarea", rows: 3 },

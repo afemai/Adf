@@ -4,7 +4,7 @@ import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
-import CoconutFarmScene from "@/components/three/CoconutFarmScene";
+import PlantationShowcase from "@/components/coconut/PlantationShowcase";
 
 export const revalidate = 300;
 
@@ -50,14 +50,14 @@ export default async function CoconutPage() {
         <div className="heritage-border h-1.5" aria-hidden />
       </section>
 
-      {/* 3D farm */}
+      {/* Plantation in motion */}
       <section className="container-site py-16 lg:py-20">
         <Reveal>
-          <SectionHeader eyebrow="The Farm" title={coco.journeyTitle} description={coco.journeyText} />
+          <SectionHeader eyebrow="The Farm in Motion" title={coco.journeyTitle} description={coco.journeyText} />
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mt-10">
-            <CoconutFarmScene poster="/images/leader-6.jpg" />
+            <PlantationShowcase />
           </div>
         </Reveal>
       </section>

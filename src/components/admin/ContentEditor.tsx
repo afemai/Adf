@@ -133,7 +133,6 @@ export default function ContentEditor({
                     help={field.help}
                     items={(value as Array<Record<string, unknown>>) ?? []}
                     itemFields={field.itemFields}
-                    itemTitle={field.itemTitle}
                     onChange={(items) => setValue(`${section.path}.${field.key}`, items)}
                   />
                 );
@@ -166,6 +165,25 @@ export default function ContentEditor({
                     <p className="text-xs font-bold uppercase tracking-wider text-navy-800">{field.label}</p>
                     {field.help && <p className="mt-0.5 text-xs text-slate-500">{field.help}</p>}
                     <input type="color" value={String(value || "#0B2447")} onChange={(e) => setValue(`${section.path}.${field.key}`, e.target.value)} className="mt-2 h-11 w-full cursor-pointer rounded-xl border border-navy-200 bg-white" />
+                  </label>
+                );
+              }
+              if (field.type === "select") {
+                return (
+                  <label key={field.key} className="block max-w-md">
+                    <p className="text-xs font-bold uppercase tracking-wider text-navy-800">{field.label}</p>
+                    {field.help && <p className="mt-0.5 text-xs text-slate-500">{field.help}</p>}
+                    <select
+                      value={String(value ?? "")}
+                      onChange={(e) => setValue(`${section.path}.${field.key}`, e.target.value)}
+                      className="mt-2 w-full rounded-xl border border-navy-200 bg-white px-4 py-2.5 text-sm text-navy-900 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
+                    >
+                      {field.options.map((o) => (
+                        <option key={o.value} value={o.value}>
+                          {o.label}
+                        </option>
+                      ))}
+                    </select>
                   </label>
                 );
               }
