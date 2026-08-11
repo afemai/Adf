@@ -1,5 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import LoginForm from "@/components/admin/LoginForm";
+import { loadData } from "@/lib/dataStore";
 
 export const dynamic = "force-dynamic";
 
@@ -7,7 +8,8 @@ export async function generateMetadata() {
   return { title: "Admin Login", robots: { index: false, follow: false } };
 }
 
-export default function AdminLoginPage() {
+export default async function AdminLoginPage() {
+  const data = await loadData();
   return (
     <main className="flex min-h-screen items-center justify-center bg-navy-900 px-4 py-12">
       <div className="w-full max-w-md">
@@ -15,7 +17,7 @@ export default function AdminLoginPage() {
           <div className="text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/brand/logo.jpeg"
+              src={data.general.logo || "/brand/logo.jpeg"}
               alt="Afemhai Descendant Forum logo"
               className="mx-auto h-20 w-20 rounded-full object-cover ring-4 ring-gold-500/50"
               width={80}

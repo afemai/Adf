@@ -10,12 +10,12 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   const data = await loadPublicData();
 
   if (data.settings.maintenanceMode) {
-    return <MaintenanceScreen orgName={data.general.orgName} socials={data.general.socials} />;
+    return <MaintenanceScreen orgName={data.general.orgName} logo={data.general.logo} socials={data.general.socials} />;
   }
 
   return (
     <>
-      <Navbar orgName={data.general.orgName} announcement={data.homepage.announcement} seasonalMode={data.settings.seasonal.mode} />
+      <Navbar orgName={data.general.orgName} logo={data.general.logo} announcement={data.homepage.announcement} seasonalMode={data.settings.seasonal.mode} />
       <main className="flex-1">{children}</main>
       <Footer general={data.general} seasonalMode={data.settings.seasonal.mode} />
       <WhatsAppButton phone={data.general.socials.whatsapp || data.general.phones[0] || ""} />

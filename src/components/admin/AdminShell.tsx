@@ -24,7 +24,7 @@ const NAV = [
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
-export default function AdminShell({ children, orgName }: { children: React.ReactNode; orgName: string }) {
+export default function AdminShell({ children, orgName, logo }: { children: React.ReactNode; orgName: string; logo?: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ export default function AdminShell({ children, orgName }: { children: React.Reac
         <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
           <div className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brand/logo.jpeg" alt="" className="h-9 w-9 rounded-full object-cover ring-2 ring-gold-500/60" width={36} height={36} />
+            <img src={logo || "/brand/logo.jpeg"} alt="" className="h-9 w-9 rounded-full object-cover ring-2 ring-gold-500/60" width={36} height={36} />
             <div className="leading-tight">
               <p className="text-sm font-bold truncate">{orgName}</p>
               <p className="flex items-center gap-1 text-[11px] text-gold-400">

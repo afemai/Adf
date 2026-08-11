@@ -13,6 +13,7 @@ export const DEFAULT_DATA: SiteData = {
     shortName: "ADF",
     tagline: "Unity is Power",
     philosophy: "One People. Diverse Communities. Shared Heritage. Common Future.",
+    logo: "/brand/logo.jpeg",
     address: "20, Jattu Road, Opposite Secretariat Road, Auchi, Edo State, Nigeria",
     phones: ["+234 803 360 4406", "+234 803 294 8240", "+234 803 920 9090"],
     emails: ["idoghojohn93@gmail.com"],
@@ -67,6 +68,7 @@ export const DEFAULT_DATA: SiteData = {
   },
   about: {
     introTitle: "Who Are the Afemai?",
+    introImage: "/images/executives.jpg",
     introText:
       "The Afemai (also written Afenmai) are one of the major ethnocultural groupings of northern Edo State, Nigeria. The area broadly corresponds to the six Local Government Areas of the Edo North Senatorial District — Etsako West, Etsako Central, Etsako East, Owan East, Owan West and Akoko-Edo. Afemai is not a single kingdom: it is a broad ethnocultural family of numerous clans, communities and traditional polities, bound by related Edoid languages, shared customs and an interconnected history.",
     originTitle: "The Question of Origin",
@@ -225,6 +227,36 @@ export const DEFAULT_DATA: SiteData = {
     journeyTitle: "From Farm to Product",
     journeyText:
       "Explore the journey: palms harvested from the farm, coconuts de-husked by modern processing machinery, and the kernel, husk and shell transformed into the full range of coconut products.",
+    videos: [
+      {
+        id: "v1",
+        src: "/videos/plantation-drone.mp4",
+        poster: "/images/poster-plantation-drone.jpg",
+        label: "Aerial plantation",
+        caption: "Rows of coconut palms reaching the horizon",
+      },
+      {
+        id: "v2",
+        src: "/videos/coconut-sunset.mp4",
+        poster: "/images/poster-coconut-sunset.jpg",
+        label: "Palms at sunset",
+        caption: "The grove glowing in golden hour light",
+      },
+      {
+        id: "v3",
+        src: "/videos/coconut-jungle.mp4",
+        poster: "/images/poster-coconut-jungle.jpg",
+        label: "Deep in the grove",
+        caption: "Between the trunks — the farm from the ground",
+      },
+      {
+        id: "v4",
+        src: "/videos/coconut-palm-wind.mp4",
+        poster: "/images/poster-coconut-palm-wind.jpg",
+        label: "Wind through the leaves",
+        caption: "Fronds swaying above the plantation floor",
+      },
+    ],
     factoryTitle: "Inside Our Processing Facility",
     factoryText:
       "Real footage from the Forum's coconut processing line — a modern de-husking machine at work, the first step in turning raw fruit into finished products.",

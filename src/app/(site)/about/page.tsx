@@ -2,6 +2,7 @@ import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
+import HeritagePattern from "@/components/ui/HeritagePattern";
 import { MapPin, Shield, Landmark, ScrollText, Quote } from "lucide-react";
 
 export const revalidate = 300;
@@ -28,14 +29,37 @@ export default async function AboutPage() {
             </defs>
             <rect width="100%" height="100%" fill="url(#adf-grid-about)" className="text-gold-400" />
           </svg>
+          <HeritagePattern id="adf-palms-about" className="absolute inset-0 h-full w-full opacity-[0.05] text-gold-300" />
         </div>
-        <div className="container-site relative py-16 lg:py-20">
+        <div className="container-site relative grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
           <Reveal>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">Our History &amp; Heritage</p>
             <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight text-white text-balance sm:text-5xl">
               The Story of the Afemai People
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-cream-100/80 sm:text-lg">{about.introText}</p>
+          </Reveal>
+          <Reveal delay={0.15} className="relative">
+            {about.introImage && (
+              <div className="relative mx-auto max-w-md">
+                <span aria-hidden className="animate-glow-pulse absolute -inset-4 rounded-[2.5rem] bg-gold-500/10 blur-2xl" />
+                <div aria-hidden className="animate-float-slow absolute -inset-3 rounded-[2rem] border border-gold-500/40" />
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60 ring-1 ring-gold-500/30">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={about.introImage}
+                    alt="The Afemhai people and communities"
+                    className="animate-ken-burns h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/10 bg-navy-950/75 px-5 py-3 backdrop-blur-md">
+                    <p className="font-display text-base font-semibold text-white">{about.philosophy}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </Reveal>
         </div>
         <div className="heritage-border h-1.5" aria-hidden />

@@ -18,10 +18,12 @@ const NAV_LINKS = [
 
 export default function Navbar({
   orgName,
+  logo,
   announcement,
   seasonalMode = "none",
 }: {
   orgName: string;
+  logo?: string;
   announcement?: { enabled: boolean; text: string; link?: string; linkLabel?: string };
   seasonalMode?: SeasonalMode;
 }) {
@@ -66,7 +68,7 @@ export default function Navbar({
           <Link href="/" className="flex items-center gap-3 shrink-0" aria-label={`${orgName} — home`}>
             <span className="relative">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/brand/logo.jpeg" alt="Afemhai Descendant Forum logo" className="h-11 w-11 rounded-full object-cover ring-2 ring-gold-500/60" width={44} height={44} />
+              <img src={logo || "/brand/logo.jpeg"} alt="Afemhai Descendant Forum logo" className="h-11 w-11 rounded-full object-cover ring-2 ring-gold-500/60" width={44} height={44} />
               <SeasonalLogoOverlay mode={seasonalMode} />
             </span>
             <span className="hidden sm:block font-display text-navy-900 leading-tight">

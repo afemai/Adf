@@ -10,9 +10,11 @@ const SECTIONS: SectionDef[] = [
     path: "general",
     fields: [
       { key: "orgName", label: "Organisation name", type: "text", help: "As registered with CAC: AFEMHAI DESCENDANT FORUM" },
+      { key: "orgNameFull", label: "Full legal name", type: "text" },
       { key: "shortName", label: "Short name", type: "text" },
       { key: "tagline", label: "Motto / tagline", type: "text", help: "e.g. 'Unity is Power'" },
       { key: "philosophy", label: "Philosophy", type: "text" },
+      { key: "logo", label: "Logo / emblem", type: "image", help: "Shown in the navbar, footer, hero and admin panel" },
       { key: "regNo", label: "CAC Registration number", type: "text" },
       { key: "tin", label: "TIN", type: "text" },
       { key: "incDate", label: "Date of incorporation", type: "text" },
@@ -24,6 +26,8 @@ const SECTIONS: SectionDef[] = [
     path: "general",
     fields: [
       { key: "address", label: "Headquarters address", type: "textarea", rows: 2 },
+      { key: "phones", label: "Phone numbers", type: "array", itemFields: [{ key: "value", label: "Phone number", type: "text", placeholder: "+234 803 000 0000" }] },
+      { key: "emails", label: "Email addresses", type: "array", itemFields: [{ key: "value", label: "Email", type: "text", placeholder: "name@example.com" }] },
       { key: "socials.facebook", label: "Facebook URL", type: "url" },
       { key: "socials.instagram", label: "Instagram URL", type: "url" },
       { key: "socials.twitter", label: "X (Twitter) URL", type: "url" },

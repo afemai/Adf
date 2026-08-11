@@ -4,6 +4,7 @@ import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
+import HeritagePattern from "@/components/ui/HeritagePattern";
 import PlantationShowcase from "@/components/coconut/PlantationShowcase";
 
 export const revalidate = 300;
@@ -37,6 +38,7 @@ export default async function CoconutPage() {
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 right-1/4 h-80 w-80 rounded-full bg-gold-500/15 blur-3xl" />
           <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-leaf-600/30 blur-3xl" />
+          <HeritagePattern id="adf-palms-coconut" className="absolute inset-0 h-full w-full opacity-[0.05] text-gold-300" />
         </div>
         <div className="container-site relative py-16 lg:py-20">
           <Reveal>
@@ -57,7 +59,7 @@ export default async function CoconutPage() {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mt-10">
-            <PlantationShowcase />
+            <PlantationShowcase clips={coco.videos} />
           </div>
         </Reveal>
       </section>
@@ -126,6 +128,18 @@ export default async function CoconutPage() {
                 {group.items.map((p, i) => (
                   <Reveal key={p.id} delay={Math.min((i % 3) * 0.06, 0.18)}>
                     <div className="group h-full rounded-2xl border border-navy-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold-500/50 hover:shadow-lg">
+                      {p.image && (
+                        <div className="relative mb-4 aspect-[16/9] overflow-hidden rounded-xl bg-navy-100">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={p.image}
+                            alt={p.name}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
                       <div className="flex items-center justify-between gap-3">
                         <h3 className="font-display text-lg font-semibold text-navy-900">{p.name}</h3>
                         <ArrowUpRight className="h-4 w-4 shrink-0 text-gold-600 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />

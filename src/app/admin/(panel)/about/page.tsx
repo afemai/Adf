@@ -10,6 +10,7 @@ const SECTIONS: SectionDef[] = [
     fields: [
       { key: "introTitle", label: "Section title", type: "text" },
       { key: "introText", label: "Introduction", type: "textarea", rows: 5 },
+      { key: "introImage", label: "Intro photo", type: "image", help: "Featured photo in the page hero (landscape works best)" },
       { key: "originTitle", label: "Origin section title", type: "text" },
       { key: "originText", label: "Origin text", type: "textarea", rows: 5 },
       { key: "kukurukuTitle", label: "Kukuruku section title", type: "text" },

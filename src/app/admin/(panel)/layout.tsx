@@ -14,7 +14,11 @@ export default async function AdminPanelLayout({ children }: { children: React.R
   }
 
   const data = await loadData();
-  return <AdminShell orgName={data.general.orgName}>{children}</AdminShell>;
+  return (
+    <AdminShell orgName={data.general.orgName} logo={data.general.logo}>
+      {children}
+    </AdminShell>
+  );
 }
 
 export const dynamic = "force-dynamic";

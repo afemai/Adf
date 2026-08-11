@@ -3,6 +3,7 @@ import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
+import HeritagePattern from "@/components/ui/HeritagePattern";
 import { initials } from "@/lib/utils";
 
 export const revalidate = 300;
@@ -82,6 +83,7 @@ export default async function LeadershipPage() {
       <section className="relative overflow-hidden bg-navy-900">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 left-1/4 h-80 w-80 rounded-full bg-gold-500/15 blur-3xl" />
+          <HeritagePattern id="adf-palms-leadership" className="absolute inset-0 h-full w-full opacity-[0.05] text-gold-300" />
         </div>
         <div className="container-site relative py-16 lg:py-20">
           <Reveal>

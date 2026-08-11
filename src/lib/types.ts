@@ -104,6 +104,7 @@ export interface GeneralInfo {
   shortName: string;
   tagline: string;
   philosophy: string;
+  logo: string;
   address: string;
   phones: string[];
   emails: string[];
@@ -130,6 +131,7 @@ export interface HomepageContent {
 export interface AboutContent {
   introTitle: string;
   introText: string;
+  introImage: string;
   originTitle: string;
   originText: string;
   kukurukuTitle: string;
@@ -145,11 +147,20 @@ export interface AboutContent {
   philosophy: string;
 }
 
+export interface PlantationClip {
+  id: string;
+  src: string;
+  poster: string;
+  label: string;
+  caption: string;
+}
+
 export interface CoconutContent {
   introTitle: string;
   introText: string;
   journeyTitle: string;
   journeyText: string;
+  videos: PlantationClip[];
   factoryTitle: string;
   factoryText: string;
   productsTitle: string;

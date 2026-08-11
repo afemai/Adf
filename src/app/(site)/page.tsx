@@ -4,6 +4,7 @@ import { ArrowRight, Handshake, Landmark, Sprout, Newspaper, CalendarDays, MapPi
 import { loadPublicData } from "@/lib/dataStore";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
+import HeritagePattern from "@/components/ui/HeritagePattern";
 import StatsBand from "@/components/home/StatsBand";
 import { formatDate } from "@/lib/utils";
 
@@ -29,7 +30,7 @@ export default async function HomePage() {
           <div className="animate-aurora absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-gold-500/20 blur-3xl" />
           <div className="animate-aurora absolute bottom-0 -left-24 h-96 w-96 rounded-full bg-leaf-600/30 blur-3xl" style={{ animationDelay: "-6s" }} />
           <div className="animate-aurora absolute top-1/3 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-navy-500/40 blur-3xl" style={{ animationDelay: "-12s" }} />
-          <svg className="absolute inset-0 h-full w-full opacity-[0.07]" aria-hidden>
+          <svg className="absolute inset-0 h-full w-full opacity-[0.06]" aria-hidden>
             <defs>
               <pattern id="adf-grid" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M40 0H0v40" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -37,6 +38,7 @@ export default async function HomePage() {
             </defs>
             <rect width="100%" height="100%" fill="url(#adf-grid)" className="text-gold-400" />
           </svg>
+          <HeritagePattern className="absolute inset-0 h-full w-full opacity-[0.05] text-gold-300" />
         </div>
 
         <div className="container-site relative grid items-center gap-14 py-16 lg:grid-cols-2 lg:py-28">
@@ -49,7 +51,7 @@ export default async function HomePage() {
                   <span aria-hidden className="animate-glow-pulse absolute -inset-4 rounded-full bg-gold-500/15 blur-xl" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/brand/logo.jpeg"
+                    src={data.general.logo || "/brand/logo.jpeg"}
                     alt="Afemhai Descendant Forum emblem"
                     className="relative h-full w-full rounded-full object-cover ring-2 ring-gold-500/70 shadow-xl shadow-gold-500/20"
                     width={112}

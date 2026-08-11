@@ -7,8 +7,9 @@ import type { GeneralInfo, SeasonalMode } from "@/lib/types";
 export default function Footer({ general, seasonalMode = "none" }: { general: GeneralInfo; seasonalMode?: SeasonalMode }) {
   const year = new Date().getFullYear();
   const socials = general.socials;
+  const valid = (u?: string) => Boolean(u && /^https?:\/\/.+/.test(u));
   const hasSocials =
-    socials.facebook || socials.instagram || socials.twitter || socials.youtube;
+    valid(socials.facebook) || valid(socials.instagram) || valid(socials.twitter) || valid(socials.youtube);
 
   return (
     <footer className="bg-navy-950 text-cream-100">
@@ -19,7 +20,7 @@ export default function Footer({ general, seasonalMode = "none" }: { general: Ge
             <div className="flex items-center gap-3">
               <span className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/brand/logo.jpeg" alt="" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold-500/70" width={48} height={48} />
+                <img src={general.logo || "/brand/logo.jpeg"} alt="" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold-500/70" width={48} height={48} />
                 <SeasonalLogoOverlay mode={seasonalMode} />
               </span>
               <div>
@@ -84,22 +85,22 @@ export default function Footer({ general, seasonalMode = "none" }: { general: Ge
             <h3 className="font-display text-base font-semibold text-gold-400 uppercase tracking-wider">Follow Us</h3>
             {hasSocials ? (
               <div className="mt-4 flex gap-3">
-                {socials.facebook && (
+                {/^https?:\/\/.+/.test(socials.facebook || "") && (
                   <a href={socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-navy-800 text-cream-100 hover:bg-gold-500 hover:text-navy-900 transition-colors">
                     <FacebookIcon className="h-5 w-5" />
                   </a>
                 )}
-                {socials.instagram && (
+                {/^https?:\/\/.+/.test(socials.instagram || "") && (
                   <a href={socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-navy-800 text-cream-100 hover:bg-gold-500 hover:text-navy-900 transition-colors">
                     <InstagramIcon className="h-5 w-5" />
                   </a>
                 )}
-                {socials.twitter && (
+                {/^https?:\/\/.+/.test(socials.twitter || "") && (
                   <a href={socials.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-navy-800 text-cream-100 hover:bg-gold-500 hover:text-navy-900 transition-colors">
                     <XIcon className="h-5 w-5" />
                   </a>
                 )}
-                {socials.youtube && (
+                {/^https?:\/\/.+/.test(socials.youtube || "") && (
                   <a href={socials.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-navy-800 text-cream-100 hover:bg-gold-500 hover:text-navy-900 transition-colors">
                     <YoutubeIcon className="h-5 w-5" />
                   </a>
