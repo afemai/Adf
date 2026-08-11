@@ -6,6 +6,7 @@ import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
 import HeritagePattern from "@/components/ui/HeritagePattern";
 import StatsBand from "@/components/home/StatsBand";
+import AutoplayVideo from "@/components/coconut/AutoplayVideo";
 import { formatDate } from "@/lib/utils";
 
 const PILLAR_ICONS: Record<string, typeof Handshake> = {
@@ -126,6 +127,18 @@ export default async function HomePage() {
 
       <StatsBand stats={data.homepage.stats} />
 
+      {/* ---------------- PRODUCT MARQUEE ---------------- */}
+      <div aria-hidden className="marquee-paused overflow-hidden border-y border-gold-500/25 bg-gradient-to-r from-navy-950 via-navy-900 to-navy-950 py-4">
+        <div className="animate-marquee flex w-max items-center gap-10">
+          {[...data.coconut.products, ...data.coconut.products].map((p, i) => (
+            <span key={`${p.id}-${i}`} className="flex items-center gap-10 whitespace-nowrap">
+              <span className="text-sm font-semibold uppercase tracking-[0.22em] text-gold-400">{p.name}</span>
+              <span className="h-1.5 w-1.5 rotate-45 bg-gold-500/60" />
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* ---------------- PILLARS ---------------- */}
       <section className="container-site py-16 lg:py-24">
         <Reveal>
@@ -176,17 +189,13 @@ export default async function HomePage() {
           <Reveal delay={0.15}>
             <div className="relative">
               <div aria-hidden className="absolute -inset-3 rounded-[2rem] bg-gold-500/15" />
-              <div className="relative overflow-hidden rounded-[1.75rem] shadow-xl">
-                <video
+              <div className="relative overflow-hidden rounded-[1.75rem] shadow-xl ring-1 ring-navy-100">
+                <AutoplayVideo
                   src="/videos/factory.mp4"
-                  controls
-                  preload="metadata"
-                  playsInline
-                  className="aspect-video w-full bg-navy-950 object-cover"
-                  aria-label="Coconut de-husking machine at the Afemhai processing facility"
+                  label="Coconut de-husking machine at the Afemhai processing facility"
                 />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-500">Inside the Forum&apos;s coconut processing facility</p>
+              <p className="mt-3 text-center text-xs text-slate-500">Inside the Forum&apos;s coconut processing facility — scroll-past auto play, sound off</p>
             </div>
           </Reveal>
         </div>

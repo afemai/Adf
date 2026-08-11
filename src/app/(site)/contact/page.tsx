@@ -1,8 +1,9 @@
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Navigation, MessageCircle } from "lucide-react";
 import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
 import Reveal from "@/components/motion/Reveal";
 import ContactForm from "@/components/contact/ContactForm";
+import { WhatsAppIcon } from "@/components/layout/WhatsAppButton";
 
 export const revalidate = 300;
 
@@ -39,6 +40,46 @@ export default async function ContactPage() {
           {/* Info column */}
           <Reveal>
             <div className="space-y-4">
+              {/* Quick actions — always in sync with the editable contact data */}
+              <div className="grid grid-cols-2 gap-3">
+                {g.phones[0] && (
+                  <a
+                    href={`tel:${g.phones[0].replace(/\s/g, "")}`}
+                    className="group rounded-2xl bg-navy-900 p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                  >
+                    <Phone className="mx-auto h-5 w-5 text-gold-500" aria-hidden />
+                    <p className="mt-2 text-xs font-bold uppercase tracking-wider text-cream-50">Call us</p>
+                  </a>
+                )}
+                <a
+                  href={`https://wa.me/${(g.socials.whatsapp || g.phones[0] || "").replace(/[^\d]/g, "").replace(/^0/, "234")}?text=${encodeURIComponent("Hello! I found the Afemhai Descendant Forum website and I'd like to make an enquiry.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-2xl bg-[#1DA851] p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  <WhatsAppIcon className="mx-auto h-5 w-5 text-white" />
+                  <p className="mt-2 text-xs font-bold uppercase tracking-wider text-white">WhatsApp</p>
+                </a>
+                {g.emails[0] && (
+                  <a
+                    href={`mailto:${g.emails[0]}`}
+                    className="group rounded-2xl bg-gold-500 p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                  >
+                    <Mail className="mx-auto h-5 w-5 text-navy-900" aria-hidden />
+                    <p className="mt-2 text-xs font-bold uppercase tracking-wider text-navy-900">Email us</p>
+                  </a>
+                )}
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(g.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-2xl border border-navy-200 bg-white p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  <Navigation className="mx-auto h-5 w-5 text-navy-800" aria-hidden />
+                  <p className="mt-2 text-xs font-bold uppercase tracking-wider text-navy-900">Get directions</p>
+                </a>
+              </div>
+
               <div className="rounded-3xl border border-navy-100 bg-white p-7 shadow-sm">
                 <div className="flex items-start gap-4">
                   <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-navy-800 text-gold-500">
@@ -96,14 +137,31 @@ export default async function ContactPage() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-3xl border border-navy-100 shadow-sm">
+              <div className="overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm">
                 <iframe
-                  title="Map — Afemhai Descendant Forum, Auchi, Edo State"
-                  src={c.mapUrl}
+                  title={`Map — ${g.address}`}
+                  src={
+                    c.mapUrl ||
+                    `https://www.google.com/maps?q=${encodeURIComponent(g.address)}&z=15&output=embed`
+                  }
                   className="h-72 w-full border-0 bg-navy-100"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+                <div className="flex items-center justify-between gap-3 border-t border-navy-100 bg-white px-5 py-3">
+                  <p className="flex items-center gap-2 text-xs text-slate-500">
+                    <MapPin className="h-3.5 w-3.5 text-gold-600" aria-hidden />
+                    {g.address}
+                  </p>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(g.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 rounded-full bg-navy-900 px-4 py-1.5 text-xs font-bold text-cream-50 hover:bg-navy-800"
+                  >
+                    Navigate ↗
+                  </a>
+                </div>
               </div>
             </div>
           </Reveal>

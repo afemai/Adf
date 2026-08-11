@@ -6,6 +6,7 @@ import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
 import HeritagePattern from "@/components/ui/HeritagePattern";
 import PlantationShowcase from "@/components/coconut/PlantationShowcase";
+import AutoplayVideo from "@/components/coconut/AutoplayVideo";
 
 export const revalidate = 300;
 
@@ -85,17 +86,13 @@ export default async function CoconutPage() {
           <Reveal delay={0.15}>
             <div className="relative">
               <div aria-hidden className="absolute -inset-3 rounded-[2rem] bg-gold-500/15" />
-              <div className="relative overflow-hidden rounded-[1.75rem] shadow-xl">
-                <video
+              <div className="relative overflow-hidden rounded-[1.75rem] shadow-xl ring-1 ring-navy-100">
+                <AutoplayVideo
                   src="/videos/factory.mp4"
-                  controls
-                  preload="metadata"
-                  playsInline
-                  className="aspect-video w-full bg-navy-950 object-cover"
-                  aria-label="Coconut de-husking machine in operation at the Afemhai processing facility"
+                  label="Coconut de-husking machine in operation at the Afemhai processing facility"
                 />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-500">Real footage — the de-husking line at work</p>
+              <p className="mt-3 text-center text-xs text-slate-500">Real footage — the de-husking line at work (auto plays, sound off)</p>
             </div>
           </Reveal>
         </div>

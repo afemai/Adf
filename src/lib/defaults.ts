@@ -401,7 +401,7 @@ export const DEFAULT_DATA: SiteData = {
       "Whether you are a descendant seeking to reconnect, a partner exploring the coconut economy, or a government or corporate body working with the Forum — we would love to hear from you.",
     formTitle: "Send Us a Message",
     formText: "Fill the form and the Forum's secretariat will respond promptly.",
-    mapUrl: "https://www.openstreetmap.org/export/embed.html?bbox=6.26%2C7.07%2C6.30%2C7.09&layer=mapnik&marker=7.0784%2C6.2832",
+    mapUrl: "",
     messages: [],
   },
   events: {

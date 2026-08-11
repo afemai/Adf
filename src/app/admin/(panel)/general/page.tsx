@@ -35,6 +35,18 @@ const SECTIONS: SectionDef[] = [
       { key: "socials.whatsapp", label: "WhatsApp number (full international)", type: "text", placeholder: "+234 803 000 0000" },
     ],
   },
+  {
+    title: "Contact page texts",
+    description: "Headline, intro and form copy on /contact. The map automatically points at the HQ address above — or override it below.",
+    path: "contact",
+    fields: [
+      { key: "introTitle", label: "Page headline", type: "text" },
+      { key: "introText", label: "Page introduction", type: "textarea", rows: 3 },
+      { key: "formTitle", label: "Form title", type: "text" },
+      { key: "formText", label: "Form help text", type: "text" },
+      { key: "mapUrl", label: "Map override URL (optional)", type: "url", help: "Leave empty to auto-point Google Maps at the headquarters address" },
+    ],
+  },
 ];
 
 export default async function GeneralAdminPage() {
