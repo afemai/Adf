@@ -1,6 +1,6 @@
-# Afemhai Descendant Forum — Official Website
+# Afemai Descendants Forum — Official Website
 
-Professional marketing website + full admin CMS for the **Afemhai Descendant Forum**
+Professional marketing website + full admin CMS for the **Afemai Descendants Forum**
 (incorporated trustee, CAC Reg. No. 7309739), Auchi, Edo State, Nigeria.
 
 - 5 public pages: Home · Our History · Coconut Business · Leadership · Contact
@@ -30,7 +30,7 @@ Without `DATABASE_URL` the site uses a local JSON file store
 ## Admin access
 
 - URL: `/admin`
-- First-run password: `Afemhai2026!`
+- First-run password: `Afemai2026!`
   (change it immediately in **Settings**, and set `ADMIN_INITIAL_PASSWORD`
   in production before first deploy so it never ships with the default)
 

@@ -7,6 +7,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import HeritagePattern from "@/components/ui/HeritagePattern";
 import PlantationShowcase from "@/components/coconut/PlantationShowcase";
 import AutoplayVideo from "@/components/coconut/AutoplayVideo";
+import HeroBackdrop from "@/components/layout/HeroBackdrop";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +38,7 @@ export default async function CoconutPage() {
       {/* Page hero */}
       <section className="relative overflow-hidden bg-navy-900">
         <div aria-hidden className="pointer-events-none absolute inset-0">
+          <HeroBackdrop src="/videos/plantation-aerial.mp4" poster="/images/poster-plantation-aerial.jpg" />
           <div className="absolute -top-24 right-1/4 h-80 w-80 rounded-full bg-gold-500/15 blur-3xl" />
           <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-leaf-600/30 blur-3xl" />
           <HeritagePattern id="adf-palms-coconut" className="absolute inset-0 h-full w-full opacity-[0.05] text-gold-300" />
@@ -89,7 +91,7 @@ export default async function CoconutPage() {
               <div className="relative overflow-hidden rounded-[1.75rem] shadow-xl ring-1 ring-navy-100">
                 <AutoplayVideo
                   src="/videos/factory.mp4"
-                  label="Coconut de-husking machine in operation at the Afemhai processing facility"
+                  label="Coconut de-husking machine in operation at the Afemai processing facility"
                 />
               </div>
               <p className="mt-3 text-center text-xs text-slate-500">Real footage — the de-husking line at work (auto plays, sound off)</p>

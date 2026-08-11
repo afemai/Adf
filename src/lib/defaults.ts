@@ -8,8 +8,8 @@ import type { SiteData } from "./types";
 
 export const DEFAULT_DATA: SiteData = {
   general: {
-    orgName: "Afemhai Descendant Forum",
-    orgNameFull: "Afemhai Descendant Forum",
+    orgName: "Afemai Descendants Forum",
+    orgNameFull: "Afemai Descendants Forum",
     shortName: "ADF",
     tagline: "Unity is Power",
     philosophy: "One People. Diverse Communities. Shared Heritage. Common Future.",
@@ -25,12 +25,12 @@ export const DEFAULT_DATA: SiteData = {
   homepage: {
     heroTitle: "One People. Diverse Communities. Shared Heritage. Common Future.",
     heroSubtitle:
-      "The Afemhai Descendant Forum unites the sons and daughters of Edo North — Etsako, Owan and Akoko-Edo — at home and in the diaspora, preserving our history, empowering our people and building our future.",
+      "The Afemai Descendants Forum unites the sons and daughters of Edo North — Etsako, Owan and Akoko-Edo — at home and in the diaspora, preserving our history, empowering our people and building our future.",
     heroBadge: "A Socio-Cultural & Civic Organisation · Incorporated 2024 (Reg. No. 7309739)",
     heroImage: "/images/executives.jpg",
     announcement: {
       enabled: true,
-      text: "The investiture of High Chief Luchy Ohimai as Ambassador of Afemai Land holds on Saturday, 26 September 2026 in Auchi.",
+      text: "The investiture of High Chief Lucky Ohimai as Ambassador of Afemai Land holds on Saturday, 26 September 2026 in Auchi.",
       link: "/leadership",
       linkLabel: "Read more",
     },
@@ -62,7 +62,7 @@ export const DEFAULT_DATA: SiteData = {
     ],
     coconutTeaserTitle: "From Our Farms to the World",
     coconutTeaserText:
-      "Coconut farming and processing is a proud Afemhai industry — over 21 products from a single fruit, from oils and nutrition to coir, briquettes and crafts.",
+      "Coconut farming and processing is a proud Afemai industry — over 21 products from a single fruit, from oils and nutrition to coir, briquettes and crafts.",
     ctaPrimary: { text: "Our Coconut Business", link: "/coconut" },
     ctaSecondary: { text: "Explore Our Heritage", link: "/about" },
   },
@@ -151,9 +151,9 @@ export const DEFAULT_DATA: SiteData = {
       { era: "Late 19th–early 20th century", text: "British expansion and colonial administration reorganised the region as Kukuruku Division." },
       { era: "1960s–1970s", text: "Post-independence administrative restructuring progressively replaced the older colonial divisions." },
       { era: "1991", text: "Edo State was created from the former Bendel State." },
-      { era: "23 January 2024", text: "The Afemhai Descendant Forum was incorporated as a corporate body by the Corporate Affairs Commission (Reg. No. 7309739)." },
+      { era: "23 January 2024", text: "The Afemai Descendants Forum was incorporated as a corporate body by the Corporate Affairs Commission (Reg. No. 7309739)." },
     ],
-    aimsTitle: "Aims & Objectives of the Afemhai Descendant Forum",
+    aimsTitle: "Aims & Objectives of the Afemai Descendants Forum",
     aimsIntro:
       "The aims and objectives of the Forum are enshrined in its constitution and aligned with the 1999 Constitution of the Federal Republic of Nigeria as amended.",
     aims: [
@@ -223,7 +223,7 @@ export const DEFAULT_DATA: SiteData = {
   coconut: {
     introTitle: "Coconut Farming & Processing",
     introText:
-      "Beyond the soil of heritage grows the industry of the future. The Afemhai are turning the humble coconut into a diversified agro-industrial enterprise — from sustainable farming and harvesting to processing that yields over twenty-one valuable products, from food and nutrition to coir, briquettes and crafts.",
+      "Beyond the soil of heritage grows the industry of the future. The Afemai are turning the humble coconut into a diversified agro-industrial enterprise — from sustainable farming and harvesting to processing that yields over twenty-one valuable products, from food and nutrition to coir, briquettes and crafts.",
     journeyTitle: "From Farm to Product",
     journeyText:
       "Explore the journey: palms harvested from the farm, coconuts de-husked by modern processing machinery, and the kernel, husk and shell transformed into the full range of coconut products.",
@@ -262,7 +262,7 @@ export const DEFAULT_DATA: SiteData = {
       "Real footage from the Forum's coconut processing line — a modern de-husking machine at work, the first step in turning raw fruit into finished products.",
     productsTitle: "Over 21 Products From One Fruit",
     productsIntro:
-      "Coconut is called the tree of life for a reason. Every part — meat, milk, oil, husk, shell and water — becomes a product. This list is the working portfolio of the Afemhai coconut enterprise.",
+      "Coconut is called the tree of life for a reason. Every part — meat, milk, oil, husk, shell and water — becomes a product. This list is the working portfolio of the Afemai coconut enterprise.",
     products: [
       { id: "p1", name: "Coconut Oil", category: "Food & Nutrition", description: "Pure, cold-pressed cooking oil from fresh mature kernels — the kitchen staple of every home.", order: 1 },
       { id: "p2", name: "Virgin Coconut Oil", category: "Food & Nutrition", description: "Unrefined, unbleached, naturally fragrant oil extracted from fresh coconut milk.", order: 2 },
@@ -287,19 +287,19 @@ export const DEFAULT_DATA: SiteData = {
       { id: "p21", name: "Coconut Animal Feed", category: "Crafts & Energy", description: "Nutritious copra cake and husk-based feed supplements for livestock.", order: 21 },
     ],
     ctaTitle: "Partner With the Forum",
-    ctaText: "Investment, off-take agreements, distribution partnerships and technical collaborations are welcome. Let's grow the Afemhai coconut economy together.",
+    ctaText: "Investment, off-take agreements, distribution partnerships and technical collaborations are welcome. Let's grow the Afemai coconut economy together.",
   },
   leadership: {
     introTitle: "Leadership & Trustees",
     introText:
-      "The Afemhai Descendant Forum is led by a Board of eight Incorporated Trustees registered with the Corporate Affairs Commission on 23 January 2024. The Forum's structure honours the federal nature of Afemai society — many kingdoms, clans and communities — under one unifying roof.",
+      "The Afemai Descendants Forum is led by a Board of eight Incorporated Trustees registered with the Corporate Affairs Commission on 23 January 2024. The Forum's structure honours the federal nature of Afemai society — many kingdoms, clans and communities — under one unifying roof.",
     execsTitle: "National Executives",
     execsIntro: "The Forum's principal officers, as published in official correspondence.",
     trusteesTitle: "Incorporated Trustees",
     trusteesIntro: "The eight duly appointed Trustees registered with the Corporate Affairs Commission (Reg. No. 7309739).",
     honorTitle: "Ambassador of Afemai Land",
     honorText:
-      "In recognition of his distinguished service to Afemai heritage, cultural identity and community values, the Forum unanimously resolved to confer the title of Ambassador of Afemai Land on High Chief Luchy Ohimai — The Ogbuduwemi of Owan Nation and CEO of Tarex Conglomerate. The investiture ceremony will be conferred by the ADF Leadership on Saturday, 26 September 2026.",
+      "In recognition of his distinguished service to Afemai heritage, cultural identity and community values, the Forum unanimously resolved to confer the title of Ambassador of Afemai Land on High Chief Lucky Ohimai — The Ogbuduwemi of Owan Nation and CEO of Tarex Conglomerate. The investiture ceremony will be conferred by the ADF Leadership on Saturday, 26 September 2026.",
     leaders: [
       {
         id: "l1",
@@ -412,7 +412,7 @@ export const DEFAULT_DATA: SiteData = {
         id: "e1",
         title: "Investiture of the Ambassador of Afemai Land",
         description:
-          "The Afemhai Descendant Forum confers the title of Ambassador of Afemai Land on High Chief Luchy Ohimai — The Ogbuduwemi of Owan Nation, CEO of Tarex Conglomerate — in recognition of his service to Afemai heritage, cultural identity and community values.",
+          "The Afemai Descendants Forum confers the title of Ambassador of Afemai Land on High Chief Lucky Ohimai — The Ogbuduwemi of Owan Nation, CEO of Tarex Conglomerate — in recognition of his service to Afemai heritage, cultural identity and community values.",
         date: "2026-09-26",
         time: "To be announced",
         location: "Auchi, Edo State, Nigeria",
@@ -432,18 +432,18 @@ export const DEFAULT_DATA: SiteData = {
     ],
   },
   seo: {
-    siteTitle: "Afemhai Descendant Forum | Unity is Power",
+    siteTitle: "Afemai Descendants Forum | Unity is Power",
     siteDescription:
-      "The Afemhai Descendant Forum unites the Afemai people of Edo North, Nigeria — Etsako, Owan and Akoko-Edo — at home and in the diaspora. Preserving heritage, empowering communities and growing the coconut economy.",
+      "The Afemai Descendants Forum unites the Afemai people of Edo North, Nigeria — Etsako, Owan and Akoko-Edo — at home and in the diaspora. Preserving heritage, empowering communities and growing the coconut economy.",
     keywords:
-      "Afemhai Descendant Forum, Afemai, Afenmai, Edo North, Etsako, Owan, Akoko-Edo, Auchi, coconut products Nigeria, coconut briquettes, Afemai history",
+      "Afemai Descendants Forum, Afemai, Afenmai, Edo North, Etsako, Owan, Akoko-Edo, Auchi, coconut products Nigeria, coconut briquettes, Afemai history",
     ogImage: "/brand/logo.jpeg",
     perPage: {
-      home: { title: "Home", description: "One People. Diverse Communities. Shared Heritage. Common Future. The home of the Afemhai people — heritage, community and the coconut economy." },
-      about: { title: "Our History & Heritage", description: "The history of the Afemai people of Edo North: origins, the six Local Government Areas, traditional institutions, and the Aims & Objectives of the Afemhai Descendant Forum." },
-      coconut: { title: "Coconut Farming & Processing", description: "Over 21 coconut products from one fruit — oils, nutrition, coir, briquettes and crafts. Explore the Afemhai coconut economy from farm to product." },
-      leadership: { title: "Leadership & Trustees", description: "Meet the Board of Incorporated Trustees and national executives of the Afemhai Descendant Forum, and discover the investiture of the Ambassador of Afemai Land." },
-      contact: { title: "Contact Us", description: "Reach the Afemhai Descendant Forum in Auchi, Edo State, Nigeria — address, phones, email and a contact form." },
+      home: { title: "Home", description: "One People. Diverse Communities. Shared Heritage. Common Future. The home of the Afemai people — heritage, community and the coconut economy." },
+      about: { title: "Our History & Heritage", description: "The history of the Afemai people of Edo North: origins, the six Local Government Areas, traditional institutions, and the Aims & Objectives of the Afemai Descendants Forum." },
+      coconut: { title: "Coconut Farming & Processing", description: "Over 21 coconut products from one fruit — oils, nutrition, coir, briquettes and crafts. Explore the Afemai coconut economy from farm to product." },
+      leadership: { title: "Leadership & Trustees", description: "Meet the Board of Incorporated Trustees and national executives of the Afemai Descendants Forum, and discover the investiture of the Ambassador of Afemai Land." },
+      contact: { title: "Contact Us", description: "Reach the Afemai Descendants Forum in Auchi, Edo State, Nigeria — address, phones, email and a contact form." },
     },
   },
   theme: {
@@ -461,6 +461,10 @@ export const DEFAULT_DATA: SiteData = {
     seasonal: {
       mode: "none",
       message: "",
+      logoChristmas: "/brand/logo-christmas.jpeg",
+      logoNewYear: "/brand/logo-newyear.png",
+      logoEaster: "/brand/logo-easter.jpeg",
+      logoIndependence: "/brand/logo-independence.jpeg",
     },
   },
   updatedAt: new Date().toISOString(),

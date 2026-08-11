@@ -13,7 +13,7 @@ export default async function AdminDashboard() {
   const messages = data.contact.messages ?? [];
   const unread = messages.filter((m) => !m.isRead).length;
   const isDefaultPassword = bcrypt.compareSync(
-    process.env.ADMIN_INITIAL_PASSWORD || "Afemhai2026!",
+    process.env.ADMIN_INITIAL_PASSWORD || "Afemai2026!",
     data.settings.adminPasswordHash
   );
 

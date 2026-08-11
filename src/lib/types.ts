@@ -1,4 +1,4 @@
-// ---- Afemhai Descendant Forum - content model (single JSONB doc pattern, agcogbe-proven) ----
+// ---- Afemai Descendants Forum - content model (single JSONB doc pattern, agcogbe-proven) ----
 
 export interface LGARecord {
   id: string;
@@ -225,6 +225,10 @@ export type SeasonalMode = "none" | "christmas" | "newyear" | "independence" | "
 export interface SeasonalSettings {
   mode: SeasonalMode;
   message: string;
+  logoChristmas: string;
+  logoNewYear: string;
+  logoEaster: string;
+  logoIndependence: string;
 }
 
 export interface AppSettings {

@@ -15,7 +15,7 @@ no() { echo "FAIL  $1 -- $2"; FAIL=$((FAIL+1)); }
 echo "=== 1. login ==="
 LOGIN_CODE=$(curl -s -c "$JAR" -X POST "$BASE/api/admin/login" \
   -H "Content-Type: application/json" \
-  -d '{"password":"Afemhai2026!"}' -o $TMPD/login.json -w "%{http_code}")
+  -d '{"password":"Afemai2026!"}' -o $TMPD/login.json -w "%{http_code}")
 [ "$LOGIN_CODE" = "200" ] && ok "POST /api/admin/login -> 200" || no "POST /api/admin/login" "code=$LOGIN_CODE body=$(cat $TMPD/login.json)"
 
 echo "=== 2. session check (authed) ==="

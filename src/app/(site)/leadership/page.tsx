@@ -109,7 +109,7 @@ export default async function LeadershipPage() {
               <div className="flex-1">
                 <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">{lead.honorTitle}</p>
                 <h2 className="mt-3 font-display text-2xl font-semibold text-white text-balance sm:text-3xl">
-                  High Chief Luchy Ohimai
+                  High Chief Lucky Ohimai
                 </h2>
                 <p className="mt-1 text-sm font-bold text-gold-400">The Ogbuduwemi of Owan Nation · CEO, Tarex Conglomerate</p>
                 <p className="mt-4 max-w-3xl text-sm leading-relaxed text-cream-100/80 sm:text-base">{lead.honorText}</p>

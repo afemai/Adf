@@ -3,7 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 
 export const size = { width: 1200, height: 630 };
-export const alt = "Afemhai Descendant Forum — Unity is Power";
+export const alt = "Afemai Descendants Forum — Unity is Power";
 export const contentType = "image/png";
 export const runtime = "nodejs";
 

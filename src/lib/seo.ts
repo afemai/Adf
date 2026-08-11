@@ -9,7 +9,7 @@ export async function pageMetadata(key: PageKey): Promise<Metadata> {
   const p = seo.perPage[key];
   // Page titles are stored complete; strip any org-suffix so the layout
   // template ("%s | orgName") does not duplicate it.
-  const title = p.title.replace(/\s*\|\s*Afemhai Descendant Forum\s*$/i, "");
+  const title = p.title.replace(/\s*\|\s*Afemai Descendants Forum\s*$/i, "");
   return {
     title,
     description: p.description,

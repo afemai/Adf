@@ -8,7 +8,7 @@ PASS=0; FAIL=0
 ok(){ echo "PASS  $1"; PASS=$((PASS+1)); }
 no(){ echo "FAIL  $1 -- $2"; FAIL=$((FAIL+1)); }
 
-curl -s -c "$JAR" -X POST "$BASE/api/admin/login" -H "Content-Type: application/json" -d '{"password":"Afemhai2026!"}' -o /dev/null -w "%{http_code}" > "$TMPD/login.code"
+curl -s -c "$JAR" -X POST "$BASE/api/admin/login" -H "Content-Type: application/json" -d '{"password":"Afemai2026!"}' -o /dev/null -w "%{http_code}" > "$TMPD/login.code"
 [ "$(cat $TMPD/login.code)" = "200" ] && ok "login" || no "login"
 
 # 1. set junk social

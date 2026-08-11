@@ -21,7 +21,7 @@ export default function WhatsAppButton({ phone }: { phone: string }) {
 
   const digits = phone.replace(/[^\d]/g, "");
   const wa = `https://wa.me/${digits.startsWith("0") ? "234" + digits.slice(1) : digits}?text=${encodeURIComponent(
-    "Hello! I found the Afemhai Descendant Forum website and I'd like to make an enquiry."
+    "Hello! I found the Afemai Descendants Forum website and I'd like to make an enquiry."
   )}`;
 
   return (

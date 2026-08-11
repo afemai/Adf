@@ -48,7 +48,7 @@ export default async function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={about.introImage}
-                    alt="The Afemhai people and communities"
+                    alt="The Afemai people and communities"
                     className="animate-ken-burns h-full w-full object-cover"
                     loading="lazy"
                     decoding="async"

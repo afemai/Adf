@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import SeasonalLogoOverlay from "@/components/layout/SeasonalLogoOverlay";
 import type { SeasonalMode } from "@/lib/types";
 
 const NAV_LINKS = [
@@ -68,11 +67,10 @@ export default function Navbar({
           <Link href="/" className="flex items-center gap-3 shrink-0" aria-label={`${orgName} — home`}>
             <span className="relative">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logo || "/brand/logo.jpeg"} alt="Afemhai Descendant Forum logo" className="h-11 w-11 rounded-full object-cover ring-2 ring-gold-500/60" width={44} height={44} />
-              <SeasonalLogoOverlay mode={seasonalMode} />
+              <img src={logo || "/brand/logo.jpeg"} alt="Afemai Descendants Forum logo" className="h-11 w-11 rounded-full object-cover ring-2 ring-gold-500/60" width={44} height={44} />
             </span>
             <span className="hidden sm:block font-display text-navy-900 leading-tight">
-              <span className="block text-[13px] uppercase tracking-[0.18em] text-navy-700 font-semibold">Afemhai Descendant</span>
+              <span className="block text-[13px] uppercase tracking-[0.18em] text-navy-700 font-semibold">Afemai Descendant</span>
               <span className="block text-[11px] tracking-[0.3em] uppercase text-gold-700">Forum · Unity is Power</span>
             </span>
           </Link>

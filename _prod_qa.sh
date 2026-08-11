@@ -27,7 +27,7 @@ grep -q "080 360 4406\|803 360 4406" "$TMPD/contact.html" && ok "contact: phone 
 # admin login flow on production
 JAR="$TMPD/cookies.txt"
 rm -f "$JAR"
-code=$(curl -s -c "$JAR" -X POST "$BASE/api/admin/login" -H "Content-Type: application/json" -d '{"password":"Afemhai2026!"}' -o "$TMPD/login.json" -w "%{http_code}" --max-time 120)
+code=$(curl -s -c "$JAR" -X POST "$BASE/api/admin/login" -H "Content-Type: application/json" -d '{"password":"Afemai2026!"}' -o "$TMPD/login.json" -w "%{http_code}" --max-time 120)
 [ "$code" = "200" ] && ok "admin login -> 200" || no "admin login" "$code $(cat $TMPD/login.json 2>/dev/null)"
 code=$(curl -s -b "$JAR" "$BASE/api/admin/session" -o "$TMPD/ses.json" -w "%{http_code}" --max-time 120)
 grep -q '"authenticated":true' "$TMPD/ses.json" && ok "session authenticated" || no "session" "$(cat $TMPD/ses.json 2>/dev/null)"

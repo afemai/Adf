@@ -1,139 +1,81 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useMemo } from "react";
 import type { SeasonalSettings } from "@/lib/types";
 
-// Site-wide seasonal effects — adapted from the church-site pattern with
-// lighter particle counts so the effect never taxes low-end phones.
-// Particles are generated once (lazy useState) to keep renders pure.
+// Seasonal atmosphere for the Afemai Descendants Forum. Deliberately light
+// and distinct from a typical church-style overlay: a slim in-flow ribbon
+// (never covers the navbar) plus a small drift of themed particles.
+// All decorative layers are pointer-transparent and honour reduced motion.
 
-function Snowflake({ delay, left, duration }: { delay: number; left: number; duration: number }) {
-  const [{ fontSize, drift }] = useState(() => ({
-    fontSize: Math.random() * 14 + 10,
-    drift: [0, Math.random() * 40 - 20, Math.random() * 40 - 20, 0],
-  }));
-  return (
-    <motion.div
-      className="pointer-events-none fixed z-40 text-white/80"
-      style={{ left: `${left}%`, fontSize: `${fontSize}px` }}
-      initial={{ top: -40, opacity: 0, rotate: 0 }}
-      animate={{ top: "108vh", opacity: [0, 1, 1, 0], rotate: 360, x: drift }}
-      transition={{ duration, delay, repeat: Infinity, ease: "linear" }}
-    >
-      *
-    </motion.div>
-  );
-}
+const RIBBON: Record<string, { text: string; cls: string }> = {
+  christmas: {
+    text: "🎄 Merry Christmas from the Afemai Descendants Forum — unity is the gift that keeps giving.",
+    cls: "bg-gradient-to-r from-[#6E1423] via-[#8C1D2F] to-[#6E1423] text-amber-100 border-b border-amber-200/20",
+  },
+  newyear: {
+    text: "🎆 Happy New Year! Wishing every Afemai descendant a prosperous year ahead.",
+    cls: "bg-gradient-to-r from-[#10142B] via-[#1B2140] to-[#10142B] text-amber-200 border-b border-amber-300/20",
+  },
+  easter: {
+    text: "🌸 Happy Easter — renewal, hope and joy to every Afemai family.",
+    cls: "bg-gradient-to-r from-[#4A2C6D] via-[#6A4A93] to-[#4A2C6D] text-rose-100 border-b border-rose-200/20",
+  },
+  independence: {
+    text: "🇳🇬 Happy Independence Day, Nigeria — one nation, one destiny. Oct 1st.",
+    cls: "bg-gradient-to-r from-[#0B3D2E] via-[#008751] to-[#0B3D2E] text-white border-b border-white/20",
+  },
+};
 
-function Firework({ delay, left }: { delay: number; left: number }) {
-  const [{ color, repeatDelay }] = useState(() => {
-    const colors = ["#fbbf24", "#ef4444", "#22c55e", "#3b82f6", "#a855f7"];
-    return { color: colors[Math.floor(Math.random() * colors.length)], repeatDelay: Math.random() * 5 + 4 };
-  });
-  return (
-    <motion.div
-      className="pointer-events-none fixed z-40"
-      style={{ left: `${left}%`, bottom: "22%" }}
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: [0, 1.4, 0], opacity: [0, 1, 0] }}
-      transition={{ duration: 2, delay, repeat: Infinity, repeatDelay }}
-    >
-      <div className="h-3.5 w-3.5 rounded-full" style={{ backgroundColor: color, boxShadow: `0 0 18px ${color}, 0 0 36px ${color}` }} />
-    </motion.div>
-  );
-}
-
-function Confetti({ delay, left }: { delay: number; left: number }) {
-  const [{ color, size, round, rotateTo, drift, duration }] = useState(() => {
-    const colors = ["#fbbf24", "#ef4444", "#22c55e", "#3b82f6", "#a855f7", "#ec4899"];
-    return {
-      color: colors[Math.floor(Math.random() * colors.length)],
-      size: Math.random() * 7 + 4,
-      round: Math.random() > 0.5,
-      rotateTo: Math.random() * 720 - 360,
-      drift: [0, Math.random() * 80 - 40, Math.random() * 80 - 40],
-      duration: Math.random() * 3 + 4,
-    };
-  });
-  return (
-    <motion.div
-      className="pointer-events-none fixed z-40"
-      style={{ left: `${left}%`, backgroundColor: color, width: `${size}px`, height: `${size}px`, borderRadius: round ? "50%" : "0" }}
-      initial={{ top: -20, opacity: 1, rotate: 0 }}
-      animate={{ top: "108vh", opacity: [1, 1, 0], rotate: rotateTo, x: drift }}
-      transition={{ duration, delay, repeat: Infinity, ease: "easeIn" }}
-    />
-  );
-}
-
-function Bloom({ delay, left, top }: { delay: number; left: number; top: number }) {
-  const [flower] = useState(() => ["🌷", "🌸", "🌺", "🌻", "🌼"][Math.floor(Math.random() * 5)]);
-  return (
-    <motion.div
-      className="pointer-events-none fixed z-30 text-2xl"
-      style={{ left: `${left}%`, top: `${top}%` }}
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: [0, 1, 1, 0], opacity: [0, 0.6, 0.6, 0], rotate: [0, 12, -12, 0] }}
-      transition={{ duration: 6, delay, repeat: Infinity, repeatDelay: 2 }}
-    >
-      {flower}
-    </motion.div>
-  );
-}
-
-const BANNERS: Record<string, { gradient: string; fallback: string }> = {
-  christmas: { gradient: "from-red-600 via-green-600 to-red-600", fallback: "Merry Christmas! 🎄" },
-  newyear: { gradient: "from-yellow-500 via-purple-600 to-yellow-500", fallback: "Happy New Year! 🎆" },
-  independence: { gradient: "from-green-600 via-white to-green-600", fallback: "Happy Independence Day, Nigeria! 🇳🇬" },
-  easter: { gradient: "from-purple-500 via-pink-400 to-purple-500", fallback: "He is risen — Happy Easter! 🌷" },
+const PARTICLES: Record<string, { glyph: string; count: number; cls: string }> = {
+  christmas: { glyph: "❄", count: 16, cls: "text-amber-200/70" },
+  newyear: { glyph: "✦", count: 18, cls: "text-amber-300/80" },
+  easter: { glyph: "🌸", count: 12, cls: "opacity-70" },
+  independence: { glyph: "●", count: 20, cls: "text-[#008751]/70" },
 };
 
 export default function SeasonalDecorations({ seasonal }: { seasonal: SeasonalSettings }) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setMounted(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
-  if (!mounted || !seasonal || seasonal.mode === "none") return null;
-
   const mode = seasonal.mode;
-  const banner = BANNERS[mode];
+  const ribbon = mode !== "none" ? RIBBON[mode] : null;
+  const particles = mode !== "none" ? PARTICLES[mode] : null;
+
+  const drops = useMemo(() => {
+    if (!particles) return [];
+    return Array.from({ length: particles.count }, (_, i) => ({
+      left: `${(i * 53) % 100}%`,
+      delay: `${((i * 37) % 100) / 10}s`,
+      dur: `${9 + ((i * 13) % 7)}s`,
+      size: 10 + ((i * 7) % 12),
+    }));
+  }, [particles]);
+
+  if (!ribbon || !particles) return null;
 
   return (
-    <AnimatePresence>
-      {mode === "christmas" &&
-        Array.from({ length: 18 }).map((_, i) => (
-          <Snowflake key={`s${i}`} delay={Math.random() * 8} left={Math.random() * 100} duration={Math.random() * 5 + 8} />
-        ))}
-      {mode === "newyear" && (
-        <>
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Firework key={`f${i}`} delay={Math.random() * 8} left={Math.random() * 100} />
-          ))}
-          {Array.from({ length: 24 }).map((_, i) => (
-            <Confetti key={`c${i}`} delay={Math.random() * 8} left={Math.random() * 100} />
-          ))}
-        </>
+    <>
+      {/* Slim seasonal ribbon — in flow, never overlaps the navbar */}
+      {ribbon && (
+        <div className={`relative z-40 px-4 py-1.5 text-center text-xs font-semibold tracking-wide ${ribbon.cls}`}>
+          {ribbon.text}
+        </div>
       )}
-      {mode === "independence" &&
-        Array.from({ length: 24 }).map((_, i) => (
-          <Confetti key={`i${i}`} delay={Math.random() * 8} left={Math.random() * 100} />
+
+      {/* Gentle particle drift */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-30 overflow-hidden">
+        {drops.map((d, i) => (
+          <motion.span
+            key={i}
+            className={`absolute top-0 select-none ${particles.cls}`}
+            style={{ left: d.left, fontSize: d.size }}
+            initial={{ y: "-8vh", opacity: 0 }}
+            animate={{ y: "108vh", opacity: [0, 0.9, 0.9, 0] }}
+            transition={{ duration: Number(d.dur), delay: Number(d.delay), repeat: Infinity, ease: "linear" }}
+          >
+            {particles.glyph}
+          </motion.span>
         ))}
-      {mode === "easter" &&
-        Array.from({ length: 14 }).map((_, i) => (
-          <Bloom key={`b${i}`} delay={Math.random() * 8} left={Math.random() * 100} top={Math.random() * 100} />
-        ))}
-      {banner && (
-        <motion.div
-          className={`fixed inset-x-0 top-0 z-50 bg-gradient-to-r ${banner.gradient} py-3 text-center font-bold text-white shadow-lg`}
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          exit={{ y: -100 }}
-        >
-          <span className="text-base sm:text-xl">{seasonal.message || banner.fallback}</span>
-        </motion.div>
-      )}
-    </AnimatePresence>
+      </div>
+    </>
   );
 }

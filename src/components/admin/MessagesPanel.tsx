@@ -71,7 +71,7 @@ export default function MessagesPanel({ initialMessages }: { initialMessages: Co
               </div>
               <div className="flex items-center gap-1.5">
                 <a
-                  href={`mailto:${m.email || ""}?subject=${encodeURIComponent("Re: " + (m.subject || "Your message to the Afemhai Descendant Forum"))}`}
+                  href={`mailto:${m.email || ""}?subject=${encodeURIComponent("Re: " + (m.subject || "Your message to the Afemai Descendants Forum"))}`}
                   aria-label={m.email ? `Reply to ${m.email}` : "Reply (no email provided)"}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-navy-100/70 text-navy-800 hover:bg-gold-500 hover:text-navy-900"
                 >

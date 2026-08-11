@@ -9,7 +9,7 @@ import type { SiteData } from "./types";
 // could serve stale data after saves (agcogbe lesson). We read straight from
 // the store on every load; Neon's HTTP driver is fast (tens of ms).
 
-const DEFAULT_ADMIN_PASSWORD = process.env.ADMIN_INITIAL_PASSWORD || "Afemhai2026!";
+const DEFAULT_ADMIN_PASSWORD = process.env.ADMIN_INITIAL_PASSWORD || "Afemai2026!";
 
 function deepMerge<T>(base: T, override: Partial<T> | undefined | null): T {
   if (!override) return base;

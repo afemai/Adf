@@ -12,7 +12,7 @@ FAIL=0
 ok() { echo "PASS  $1"; PASS=$((PASS+1)); }
 no() { echo "FAIL  $1 -- $2"; FAIL=$((FAIL+1)); }
 
-curl -s -c "$JAR" -X POST "$BASE/api/admin/login" -H "Content-Type: application/json" -d '{"password":"Afemhai2026!"}' -o /dev/null -w "%{http_code}" > "$TMPD/login.code"
+curl -s -c "$JAR" -X POST "$BASE/api/admin/login" -H "Content-Type: application/json" -d '{"password":"Afemai2026!"}' -o /dev/null -w "%{http_code}" > "$TMPD/login.code"
 [ "$(cat $TMPD/login.code)" = "200" ] && ok "login" || no "login" "$(cat $TMPD/login.code)"
 
 # every editor page: must return 200, contain the expected h1, and NOT contain Next runtime error markers

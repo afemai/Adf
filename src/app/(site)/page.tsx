@@ -8,6 +8,8 @@ import HeritagePattern from "@/components/ui/HeritagePattern";
 import StatsBand from "@/components/home/StatsBand";
 import AutoplayVideo from "@/components/coconut/AutoplayVideo";
 import Countdown from "@/components/home/Countdown";
+import HeroBackdrop from "@/components/layout/HeroBackdrop";
+import { seasonalLogo } from "@/lib/seasonal";
 import { formatDate } from "@/lib/utils";
 
 const PILLAR_ICONS: Record<string, typeof Handshake> = {
@@ -28,6 +30,8 @@ export default async function HomePage() {
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden bg-navy-900">
         <div aria-hidden className="pointer-events-none absolute inset-0">
+          {/* plantation footage under the navy — fades in when ready */}
+          <HeroBackdrop src="/videos/plantation-drone.mp4" poster="/images/poster-plantation-drone.jpg" />
           {/* aurora orbs */}
           <div className="animate-aurora absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-gold-500/20 blur-3xl" />
           <div className="animate-aurora absolute bottom-0 -left-24 h-96 w-96 rounded-full bg-leaf-600/30 blur-3xl" style={{ animationDelay: "-6s" }} />
@@ -53,8 +57,8 @@ export default async function HomePage() {
                   <span aria-hidden className="animate-glow-pulse absolute -inset-4 rounded-full bg-gold-500/15 blur-xl" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={data.general.logo || "/brand/logo.jpeg"}
-                    alt="Afemhai Descendant Forum emblem"
+                    src={seasonalLogo(data.settings.seasonal, data.general.logo) || "/brand/logo.jpeg"}
+                    alt="Afemai Descendants Forum emblem"
                     className="relative h-full w-full rounded-full object-cover ring-2 ring-gold-500/70 shadow-xl shadow-gold-500/20"
                     width={112}
                     height={112}
@@ -108,7 +112,7 @@ export default async function HomePage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60 ring-1 ring-gold-500/30">
                 <Image
                   src={data.homepage.heroImage}
-                  alt="Executives of the Afemhai Descendant Forum at an official gathering"
+                  alt="Executives of the Afemai Descendants Forum at an official gathering"
                   fill
                   sizes="(max-width: 768px) 100vw, 460px"
                   className="animate-ken-burns object-cover"
@@ -193,7 +197,7 @@ export default async function HomePage() {
               <div className="relative overflow-hidden rounded-[1.75rem] shadow-xl ring-1 ring-navy-100">
                 <AutoplayVideo
                   src="/videos/factory.mp4"
-                  label="Coconut de-husking machine at the Afemhai processing facility"
+                  label="Coconut de-husking machine at the Afemai processing facility"
                 />
               </div>
               <p className="mt-3 text-center text-xs text-slate-500">Inside the Forum&apos;s coconut processing facility — scroll-past auto play, sound off</p>
@@ -258,7 +262,7 @@ export default async function HomePage() {
           <SectionHeader
             eyebrow="In the News"
             title="The Forum in the Press"
-            description="Afemhai Descendants Forum engages candidates and communities on good governance, security and development."
+            description="Afemai Descendants Forum engages candidates and communities on good governance, security and development."
           />
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -302,7 +306,7 @@ export default async function HomePage() {
           <Reveal delay={0.12}>
             <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-cream-100/70 sm:text-base">
               Descendant at home or abroad? Partner, volunteer, collaborate, or simply reconnect with your roots.
-              The Forum welcomes every Afemhai son and daughter.
+              The Forum welcomes every Afemai son and daughter.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

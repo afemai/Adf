@@ -52,7 +52,7 @@ export default async function ContactPage() {
                   </a>
                 )}
                 <a
-                  href={`https://wa.me/${(g.socials.whatsapp || g.phones[0] || "").replace(/[^\d]/g, "").replace(/^0/, "234")}?text=${encodeURIComponent("Hello! I found the Afemhai Descendant Forum website and I'd like to make an enquiry.")}`}
+                  href={`https://wa.me/${(g.socials.whatsapp || g.phones[0] || "").replace(/[^\d]/g, "").replace(/^0/, "234")}?text=${encodeURIComponent("Hello! I found the Afemai Descendants Forum website and I'd like to make an enquiry.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group rounded-2xl bg-[#1DA851] p-4 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"

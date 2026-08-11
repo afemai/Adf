@@ -24,20 +24,20 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: "Afemhai Descendant Forum | Unity is Power",
-    template: "%s | Afemhai Descendant Forum",
+    default: "Afemai Descendants Forum | Unity is Power",
+    template: "%s | Afemai Descendants Forum",
   },
   description:
-    "Afemhai Descendant Forum — uniting the sons and daughters of Afemai land (Edo North, Nigeria). One People. Diverse Communities. Shared Heritage. Common Future.",
-  keywords: ["Afemhai", "Afemai", "ADF", "Auchi", "Edo North", "coconut farming", "Etsako", "Owan", "Akoko-Edo"],
+    "Afemai Descendants Forum — uniting the sons and daughters of Afemai land (Edo North, Nigeria). One People. Diverse Communities. Shared Heritage. Common Future.",
+  keywords: ["Afemai", "Afemai", "ADF", "Auchi", "Edo North", "coconut farming", "Etsako", "Owan", "Akoko-Edo"],
   icons: {
     icon: "/brand/logo.jpeg",
     apple: "/brand/logo.jpeg",
   },
   openGraph: {
     type: "website",
-    siteName: "Afemhai Descendant Forum",
-    title: "Afemhai Descendant Forum — Unity is Power",
+    siteName: "Afemai Descendants Forum",
+    title: "Afemai Descendants Forum — Unity is Power",
     description:
       "Uniting the sons and daughters of Afemai land (Edo North, Nigeria). One People. Diverse Communities. Shared Heritage. Common Future.",
     images: [{ url: "/opengraph-image" }],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Afemhai Descendant Forum | Unity is Power",
+    title: "Afemai Descendants Forum | Unity is Power",
     description:
       "Uniting the sons and daughters of Afemai land (Edo North, Nigeria). One People. Diverse Communities. Shared Heritage. Common Future.",
     images: ["/opengraph-image"],

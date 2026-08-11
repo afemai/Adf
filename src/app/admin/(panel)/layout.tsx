@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { verifySessionToken } from "@/lib/admin-session";
 import { loadData } from "@/lib/dataStore";
+import { seasonalLogo } from "@/lib/seasonal";
 import AdminShell from "@/components/admin/AdminShell";
 
 // Server-side auth gate for the whole admin panel (route group /admin/(panel)).
@@ -15,7 +16,7 @@ export default async function AdminPanelLayout({ children }: { children: React.R
 
   const data = await loadData();
   return (
-    <AdminShell orgName={data.general.orgName} logo={data.general.logo}>
+    <AdminShell orgName={data.general.orgName} logo={seasonalLogo(data.settings.seasonal, data.general.logo)}>
       {children}
     </AdminShell>
   );

@@ -34,7 +34,11 @@ const SECTIONS: SectionDef[] = [
           { value: "easter", label: "Easter — spring blooms 🌷" },
         ],
       },
-      { key: "message", label: "Banner message (optional)", type: "text", placeholder: "e.g. Merry Christmas from Afemhai Descendant Forum!" },
+      { key: "message", label: "Banner message (optional)", type: "text", placeholder: "e.g. Merry Christmas from Afemai Descendants Forum!" },
+      { key: "logoChristmas", label: "Christmas logo", type: "image", help: "Upload the logo with the Santa hat" },
+      { key: "logoNewYear", label: "New Year logo", type: "image", help: "Upload the festive New Year logo" },
+      { key: "logoEaster", label: "Easter logo", type: "image", help: "Upload the spring/Easter logo" },
+      { key: "logoIndependence", label: "Independence logo", type: "image", help: "Upload the green-white-green logo" },
     ],
   },
 ];
