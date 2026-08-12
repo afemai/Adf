@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Navigation, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Navigation } from "lucide-react";
 import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
 import Reveal from "@/components/motion/Reveal";

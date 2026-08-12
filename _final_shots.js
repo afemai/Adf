@@ -12,7 +12,7 @@ function setMode(mode) {
 
 (async () => {
   const browser = await chromium.launch({
-    executablePath: "C:/Users/LENOVO/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe",
+    executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
   });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 

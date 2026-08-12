@@ -106,7 +106,7 @@ export default async function CoconutPage() {
           <SectionHeader eyebrow="The Range" title={coco.productsTitle} description={coco.productsIntro} />
         </Reveal>
 
-        {grouped.map((group, gi) => {
+        {grouped.map((group) => {
           const Icon = CATEGORY_ICONS[group.category] ?? Package;
           return (
             <div key={group.category} className="mt-14">

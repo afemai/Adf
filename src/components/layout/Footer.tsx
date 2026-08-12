@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { FacebookIcon, InstagramIcon, XIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
-import type { GeneralInfo, SeasonalMode } from "@/lib/types";
+import type { GeneralInfo } from "@/lib/types";
 
-export default function Footer({ general, logo, seasonalMode }: { general: GeneralInfo; logo?: string; seasonalMode?: SeasonalMode }) {
+export default function Footer({ general, logo }: { general: GeneralInfo; logo?: string }) {
   const year = new Date().getFullYear();
   const socials = general.socials;
   const valid = (u?: string) => Boolean(u && /^https?:\/\/.+/.test(u));

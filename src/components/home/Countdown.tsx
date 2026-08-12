@@ -13,9 +13,14 @@ export default function Countdown({ target, label }: { target: string; label?: s
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    setMounted(true);
+    // Hydration-safe mount gate: schedule the state flip asynchronously so
+    // the server render and the first client render stay identical.
+    const t = setTimeout(() => setMounted(true), 0);
     const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
+    return () => {
+      clearTimeout(t);
+      clearInterval(id);
+    };
   }, []);
 
   // Server and first client render must match (hydration): render a neutral

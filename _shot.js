@@ -6,7 +6,7 @@ fs.mkdirSync("_qa", { recursive: true });
 
 (async () => {
   const browser = await chromium.launch({
-    executablePath: "C:/Users/LENOVO/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe",
+    executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
   });
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const page = await ctx.newPage();

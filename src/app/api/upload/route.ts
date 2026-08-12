@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       const ext = path.extname(file.name) || ".bin";
       const blob = await put(`adf/${Date.now()}${ext}`, file, { access: "public" });
       return NextResponse.json({ ok: true, url: blob.url });
-    } catch (err) {
+    } catch {
       return NextResponse.json({ error: "Upload failed" }, { status: 500 });
     }
   }

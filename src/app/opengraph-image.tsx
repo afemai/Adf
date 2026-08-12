@@ -46,6 +46,7 @@ export default async function OpengraphImage() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- satori OG renderer requires plain img */}
             <img
               src={logo}
               width={132}

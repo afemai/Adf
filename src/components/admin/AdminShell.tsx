@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import {
   LayoutDashboard, FileText, Home, BookOpen, Leaf, Users, CalendarDays,
-  Newspaper, Award, Palette, MessageSquare, Settings, LogOut, ShieldCheck,
+  Newspaper, Award, Palette, MessageSquare, Settings, ShieldCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

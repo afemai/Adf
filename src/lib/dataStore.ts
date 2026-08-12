@@ -1,13 +1,16 @@
 import bcrypt from "bcryptjs";
+import { cache } from "react";
 import { revalidatePath } from "next/cache";
 import { DEFAULT_DATA } from "./defaults";
 import { dbRead, dbWrite } from "./store";
 import type { SiteData } from "./types";
 
-// NOTE: deliberately NO module-level cache. Next.js compiles each route into
-// its own server bundle, so a shared in-memory cache would be per-bundle and
-// could serve stale data after saves (agcogbe lesson). We read straight from
-// the store on every load; Neon's HTTP driver is fast (tens of ms).
+// NOTE: deliberately NO cross-request cache. Next.js compiles each route into
+// its own server bundle, so an in-memory memo would be per-bundle and could
+// serve stale data after saves (agcogbe lesson). We only use React's
+// per-request cache() so every component in one request shares a single
+// snapshot (layout + page + metadata = one store read), while every request
+// still reads fresh — edits are visible immediately.
 
 const DEFAULT_ADMIN_PASSWORD = process.env.ADMIN_INITIAL_PASSWORD || "Afemai2026!";
 
@@ -64,6 +67,12 @@ async function saveRaw(data: SiteData): Promise<void> {
   await dbWrite(JSON.stringify({ ...data, updatedAt: new Date().toISOString() }));
 }
 
+// React's cache(): one store read per request, shared by every component
+// (layout, page, metadata) — no cross-request staleness, no per-bundle traps.
+const loadForRender = cache(async (): Promise<SiteData> => {
+  return loadData();
+});
+
 export async function loadData(): Promise<SiteData> {
   const data = await ensureSeeded();
   // Merge with defaults so newly-added fields always have sane values.
@@ -72,7 +81,7 @@ export async function loadData(): Promise<SiteData> {
 
 /** Public-facing copy — never exposes credentials. */
 export async function loadPublicData(): Promise<SiteData> {
-  const data = await loadData();
+  const data = await loadForRender();
   return {
     ...data,
     settings: {

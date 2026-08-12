@@ -25,9 +25,9 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <>
       <NavigationFeedback />
       <ThemeStyleInjector theme={data.theme} seasonalMode={data.settings.seasonal.mode} />
-      <Navbar orgName={data.general.orgName} logo={logo} announcement={data.homepage.announcement} seasonalMode={data.settings.seasonal.mode} />
+      <Navbar orgName={data.general.orgName} logo={logo} announcement={data.homepage.announcement} />
       <main className="flex-1">{children}</main>
-      <Footer general={data.general} logo={logo} seasonalMode={data.settings.seasonal.mode} />
+      <Footer general={data.general} logo={logo} />
       <WhatsAppButton phone={data.general.socials.whatsapp || data.general.phones[0] || ""} />
       <SeasonalDecorations seasonal={data.settings.seasonal} />
       <JsonLd data={data} />

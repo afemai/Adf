@@ -17,7 +17,7 @@ const PAGES = ["/", "/about", "/coconut", "/leadership", "/contact"];
 
 (async () => {
   const browser = await chromium.launch({
-    executablePath: "C:/Users/LENOVO/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe",
+    executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
   });
   const ctx = await browser.newContext();
   let pass = 0, fail = 0;

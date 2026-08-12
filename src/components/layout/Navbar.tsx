@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { SeasonalMode } from "@/lib/types";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -19,12 +18,10 @@ export default function Navbar({
   orgName,
   logo,
   announcement,
-  seasonalMode = "none",
 }: {
   orgName: string;
   logo?: string;
   announcement?: { enabled: boolean; text: string; link?: string; linkLabel?: string };
-  seasonalMode?: SeasonalMode;
 }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -37,9 +34,8 @@ export default function Navbar({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  // Mobile menu closes instantly on link tap (see the Link onClick handlers);
+  // the current page item stays highlighted via pathname + aria-current.
 
   return (
     <header className="sticky top-0 z-50">
@@ -121,8 +117,10 @@ export default function Navbar({
                 <Link
                   key={l.href}
                   href={l.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={pathname === l.href ? "page" : undefined}
                   className={cn(
-                    "rounded-xl px-4 py-3 text-base font-medium",
+                    "rounded-xl px-4 py-3 text-base font-medium transition-colors",
                     pathname === l.href ? "bg-navy-800 text-cream-50" : "text-navy-900 hover:bg-navy-100/60"
                   )}
                 >
@@ -131,6 +129,7 @@ export default function Navbar({
               ))}
               <Link
                 href="/contact"
+                onClick={() => setOpen(false)}
                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-gold-500 px-5 py-3 text-base font-bold text-navy-900"
               >
                 <Phone className="h-5 w-5" aria-hidden />

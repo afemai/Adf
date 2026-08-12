@@ -1,4 +1,3 @@
-import { ShieldCheck } from "lucide-react";
 import LoginForm from "@/components/admin/LoginForm";
 import { loadData } from "@/lib/dataStore";
 import { seasonalLogo } from "@/lib/seasonal";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Handshake, Landmark, Sprout, Newspaper, CalendarDays, MapPin, Clock, BadgeCheck } from "lucide-react";
+import { ArrowRight, Handshake, Landmark, Sprout, Newspaper, CalendarDays, MapPin, BadgeCheck } from "lucide-react";
 import { loadPublicData } from "@/lib/dataStore";
 import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";

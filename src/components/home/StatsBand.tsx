@@ -13,13 +13,13 @@ function CountUp({ value, suffix }: { value: string; suffix?: string }) {
   useEffect(() => {
     if (!inView) return;
     if (reduce) {
-      setDisplay(value);
-      return;
+      const t = setTimeout(() => setDisplay(value), 0);
+      return () => clearTimeout(t);
     }
     const numeric = parseFloat(value);
     if (Number.isNaN(numeric)) {
-      setDisplay(value);
-      return;
+      const t = setTimeout(() => setDisplay(value), 0);
+      return () => clearTimeout(t);
     }
     const duration = 1200;
     const start = performance.now();
@@ -47,7 +47,7 @@ export default function StatsBand({ stats }: { stats: StatItem[] }) {
     <section aria-label="Key figures" className="bg-navy-900">
       <div className="heritage-border h-1" aria-hidden />
       <div className="container-site grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:grid-cols-4 lg:py-14">
-        {stats.map((s, i) => (
+        {stats.map((s) => (
           <div key={s.label} className="group text-center">
             <p className="text-gold-gradient font-display text-4xl font-bold sm:text-5xl">
               <CountUp value={s.value} />
@@ -55,7 +55,6 @@ export default function StatsBand({ stats }: { stats: StatItem[] }) {
             <p className="mt-2 text-xs uppercase tracking-[0.18em] text-cream-100/70 transition-colors group-hover:text-gold-400 sm:text-sm">
               {s.label}
             </p>
-            {i < stats.length - 1 && null}
           </div>
         ))}
       </div>

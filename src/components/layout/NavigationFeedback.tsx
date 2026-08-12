@@ -3,13 +3,28 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-// Route-change feedback: jumps to the very top of the new page (fixing the
-// mid-page scroll bug) and flashes a gold progress bar so slow navigations
-// visibly respond the instant a link is followed — critical on mobile data.
+// Route-change feedback:
+// 1. The gold bar starts the instant a same-origin link is tapped (capture
+//    phase) — mobile users see a response before the network even answers.
+// 2. On arrival the bar flashes, then fades; the page is scrolled to the very
+//    top (fixes the mid-page scroll bug).
 export default function NavigationFeedback() {
   const pathname = usePathname();
   const [loading, setLoading] = useState(false);
   const first = useRef(true);
+
+  useEffect(() => {
+    const onTap = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest?.('a[href^="/"]');
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (!href || href === pathname || href.startsWith("/api/")) return;
+      setLoading(true);
+    };
+    // Capture phase: fires before Next's own navigation handlers.
+    document.addEventListener("click", onTap, true);
+    return () => document.removeEventListener("click", onTap, true);
+  }, [pathname]);
 
   useEffect(() => {
     if (first.current) {
