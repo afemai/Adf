@@ -36,6 +36,30 @@ const SECTIONS: SectionDef[] = [
     ],
   },
   {
+    title: "Bank accounts",
+    description: "Accounts shown on the website for donations and payments. Each can be placed on the homepage, the contact page, or both.",
+    path: "general",
+    fields: [
+      {
+        key: "bankAccounts", label: "Bank accounts", type: "array",
+        itemFields: [
+          { key: "bank", label: "Bank name", type: "text", placeholder: "e.g. Moniepoint MFB" },
+          { key: "accountName", label: "Account name", type: "text", placeholder: "e.g. Afemai Descendant Forum" },
+          { key: "number", label: "Account number", type: "text", placeholder: "e.g. 3000221559" },
+          {
+            key: "placement", label: "Where to show", type: "select",
+            options: [
+              { value: "home", label: "Homepage" },
+              { value: "contact", label: "Contact page" },
+              { value: "both", label: "Both pages" },
+            ],
+          },
+          { key: "note", label: "Note (optional)", type: "text", placeholder: "e.g. For donations and support" },
+        ],
+      },
+    ],
+  },
+  {
     title: "Contact page texts",
     description: "Headline, intro and form copy on /contact. The map automatically points at the HQ address above — or override it below.",
     path: "contact",

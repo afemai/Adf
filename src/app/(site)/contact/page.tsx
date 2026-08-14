@@ -1,4 +1,5 @@
-import { MapPin, Phone, Mail, Clock, Navigation } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Navigation, Landmark } from "lucide-react";
+import BankCard from "@/components/ui/BankCard";
 import { loadPublicData } from "@/lib/dataStore";
 import { pageMetadata } from "@/lib/seo";
 import Reveal from "@/components/motion/Reveal";
@@ -15,6 +16,9 @@ export default async function ContactPage() {
   const data = await loadPublicData();
   const c = data.contact;
   const g = data.general;
+  const contactAccounts = (g.bankAccounts || []).filter(
+    (a) => a.placement === "contact" || a.placement === "both",
+  );
 
   return (
     <>
@@ -166,6 +170,24 @@ export default async function ContactPage() {
                 </div>
               </div>
             </div>
+
+            {/* Bank transfers */}
+            {contactAccounts.length > 0 && (
+              <div className="rounded-3xl border border-navy-100 bg-white p-6 shadow-sm">
+                <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-navy-900">
+                  <Landmark className="h-5 w-5 text-gold-600" aria-hidden />
+                  Bank transfers
+                </h3>
+                <p className="mt-1 text-xs text-slate-500">
+                  For partnerships, official payments and donations. Tap the copy button to copy an account number.
+                </p>
+                <div className="mt-4 grid gap-4">
+                  {contactAccounts.map((acc) => (
+                    <BankCard key={acc.id} account={acc} compact />
+                  ))}
+                </div>
+              </div>
+            )}
           </Reveal>
 
           {/* Form column */}

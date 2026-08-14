@@ -6,6 +6,7 @@ import Reveal from "@/components/motion/Reveal";
 import SectionHeader from "@/components/ui/SectionHeader";
 import HeritagePattern from "@/components/ui/HeritagePattern";
 import StatsBand from "@/components/home/StatsBand";
+import BankCard from "@/components/ui/BankCard";
 import AutoplayVideo from "@/components/coconut/AutoplayVideo";
 import Countdown from "@/components/home/Countdown";
 import HeroBackdrop from "@/components/layout/HeroBackdrop";
@@ -22,6 +23,9 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const data = await loadPublicData();
+  const homeAccounts = (data.general.bankAccounts || []).filter(
+    (a) => a.placement === "home" || a.placement === "both",
+  );
 
   const featuredEvent = data.events.events.find((e) => e.featured) ?? data.events.events[0];
 
@@ -291,6 +295,31 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* ---------------- SUPPORT THE FORUM ---------------- */}
+      {homeAccounts.length > 0 && (
+        <section className="relative overflow-hidden bg-cream-50 py-16 lg:py-20">
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute -left-24 top-1/3 h-64 w-64 rounded-full bg-gold-500/10 blur-3xl" />
+            <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-leaf-600/10 blur-3xl" />
+          </div>
+          <div className="container-site relative">
+            <SectionHeader
+              eyebrow="Give & Support"
+              title="Support the Forum"
+              description="Every contribution powers heritage preservation, education, enterprise and community development across Afemai land. Support the work of the Forum from anywhere in the world."
+              align="center"
+            />
+            <div className="mx-auto mt-10 grid max-w-3xl gap-5 md:grid-cols-2">
+              {homeAccounts.map((acc) => (
+                <Reveal key={acc.id}>
+                  <BankCard account={acc} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ---------------- CTA BAND ---------------- */}
       <section className="relative overflow-hidden bg-navy-950">

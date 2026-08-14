@@ -98,6 +98,15 @@ export interface Socials {
   whatsapp?: string;
 }
 
+export interface BankAccount {
+  id: string;
+  bank: string;
+  accountName: string;
+  number: string;
+  placement: "home" | "contact" | "both";
+  note?: string;
+}
+
 export interface GeneralInfo {
   orgName: string;
   orgNameFull: string;
@@ -109,6 +118,7 @@ export interface GeneralInfo {
   phones: string[];
   emails: string[];
   socials: { facebook: string; instagram: string; twitter: string; youtube: string; whatsapp: string };
+  bankAccounts: BankAccount[];
   regNo: string;
   tin: string;
   incDate: string;
