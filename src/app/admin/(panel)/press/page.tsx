@@ -14,6 +14,7 @@ const SECTIONS: SectionDef[] = [
         itemFields: [
           { key: "source", label: "Publication", type: "text" },
           { key: "headline", label: "Headline", type: "text" },
+          { key: "image", label: "Photo", type: "image", help: "Optional photo shown on the card" },
           { key: "url", label: "Article URL", type: "url" },
           { key: "date", label: "Date", type: "text", placeholder: "July 2024" },
         ],

@@ -27,7 +27,7 @@ const SECTIONS: SectionDef[] = [
   },
   {
     title: "Leaders & trustees",
-    description: "The first ones (order 1–2) appear as National Executives; the rest as Trustees. Upload a portrait to replace the initials.",
+    description: "Order matters: the FIRST THREE appear as National Executives, the rest as Trustees. Use ↑/↓ to move a member into position — the position sticks after Save.",
     path: "leadership",
     fields: [
       {

@@ -276,20 +276,33 @@ export default async function HomePage() {
                 href={item.url || "#"}
                 target={item.url ? "_blank" : undefined}
                 rel={item.url ? "noopener noreferrer" : undefined}
-                className="group block h-full rounded-3xl border border-navy-100 bg-white p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
+                className="group block h-full overflow-hidden rounded-3xl border border-navy-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-700">
-                  <Newspaper className="h-4 w-4" aria-hidden />
-                  {item.source}
-                  {item.date && <span className="text-slate-400">· {item.date}</span>}
+                {item.image && (
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-navy-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.image}
+                      alt={item.headline}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
+                <div className="p-7">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-700">
+                    <Newspaper className="h-4 w-4" aria-hidden />
+                    {item.source}
+                    {item.date && <span className="text-slate-400">· {item.date}</span>}
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-semibold leading-snug text-navy-900 group-hover:text-navy-700">
+                    {item.headline}
+                  </h3>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-800">
+                    Read article
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                  </span>
                 </div>
-                <h3 className="mt-4 font-display text-lg font-semibold leading-snug text-navy-900 group-hover:text-navy-700">
-                  {item.headline}
-                </h3>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-800">
-                  Read article
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-                </span>
               </a>
             </Reveal>
           ))}

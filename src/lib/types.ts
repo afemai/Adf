@@ -77,6 +77,7 @@ export interface PressItem {
   headline: string;
   url?: string;
   date?: string;
+  image?: string;
 }
 
 export interface ContactMessage {
