@@ -7,7 +7,7 @@ const BASE =
     : "http://localhost:3000");
 
 // Structured data: Organization, WebSite and the flagship Event, so search
-// engines can surface the Forum (name, address, phones) and the investiture.
+// engines can surface the Forum (name, address, phones) and its events.
 export default function JsonLd({ data }: { data: SiteData }) {
   const g = data.general;
   const ev = data.events.events.find((e) => e.featured) || data.events.events[0];

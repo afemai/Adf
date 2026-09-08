@@ -113,13 +113,13 @@ export default async function HomePage() {
             <div className="relative mx-auto max-w-md">
               <span aria-hidden className="animate-glow-pulse absolute -inset-4 rounded-[2.5rem] bg-gold-500/10 blur-2xl" />
               <div aria-hidden className="animate-float-slow absolute -inset-3 rounded-[2rem] border border-gold-500/40" />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60 ring-1 ring-gold-500/30">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-2xl shadow-navy-950/60 ring-1 ring-gold-500/30">
                 <Image
                   src={data.homepage.heroImage}
                   alt="Executives of the Afemai Descendants Forum at an official gathering"
                   fill
                   sizes="(max-width: 768px) 100vw, 460px"
-                  className="animate-ken-burns object-cover"
+                  className="animate-ken-burns object-cover object-[center_30%]"
                   priority
                 />
                 <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/10 to-transparent" />
@@ -224,7 +224,7 @@ export default async function HomePage() {
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">Upcoming Ceremony</p>
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">{data.events.sectionLabel}</p>
                 <h2 className="mt-3 font-display text-2xl font-semibold text-white text-balance sm:text-4xl">{featuredEvent.title}</h2>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-cream-100/80 sm:text-base">{featuredEvent.description}</p>
                 <div className="mt-5 flex flex-wrap gap-6 text-sm text-cream-100/70">
@@ -250,7 +250,7 @@ export default async function HomePage() {
                   href="/leadership"
                   className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-gold-500 px-6 py-3 text-sm font-bold text-gold-400 transition-colors hover:bg-gold-500 hover:text-navy-900"
                 >
-                  Learn About the Honour
+                  Learn More
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
               </Reveal>

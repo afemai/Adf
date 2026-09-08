@@ -97,7 +97,7 @@ export default async function LeadershipPage() {
         <div className="heritage-border h-1.5" aria-hidden />
       </section>
 
-      {/* Honor roll */}
+      {/* Spotlight (Conference & AGM or future honour) */}
       <section className="container-site py-16 lg:py-20">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2rem] border-2 border-gold-500/50 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 p-8 shadow-xl sm:p-12">
@@ -107,16 +107,18 @@ export default async function LeadershipPage() {
                 <Award className="h-12 w-12" aria-hidden />
               </div>
               <div className="flex-1">
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">{lead.honorTitle}</p>
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-400">{lead.spotlightTitle}</p>
                 <h2 className="mt-3 font-display text-2xl font-semibold text-white text-balance sm:text-3xl">
-                  High Chief Lucky Ohimai
+                  {lead.spotlightName}
                 </h2>
-                <p className="mt-1 text-sm font-bold text-gold-400">The Ogbuduwemi of Owan Nation · CEO, Tarex Conglomerate</p>
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-cream-100/80 sm:text-base">{lead.honorText}</p>
-                <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold-500/15 px-4 py-2 text-sm font-semibold text-gold-400">
-                  <Medal className="h-4 w-4" aria-hidden />
-                  Investiture: Saturday, 26 September 2026 · Auchi, Edo State
-                </p>
+                <p className="mt-1 text-sm font-bold text-gold-400">{lead.spotlightRole}</p>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-cream-100/80 sm:text-base">{lead.spotlightText}</p>
+                {lead.spotlightDate && (
+                  <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold-500/15 px-4 py-2 text-sm font-semibold text-gold-400">
+                    <Medal className="h-4 w-4" aria-hidden />
+                    {lead.spotlightDate}
+                  </p>
+                )}
               </div>
             </div>
           </div>

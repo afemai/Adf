@@ -189,6 +189,11 @@ export interface LeadershipContent {
   trusteesIntro: string;
   honorTitle: string;
   honorText: string;
+  spotlightTitle: string;
+  spotlightName: string;
+  spotlightRole: string;
+  spotlightText: string;
+  spotlightDate: string;
   leaders: Leader[];
   galleryTitle: string;
   galleryIntro: string;
@@ -207,6 +212,8 @@ export interface ContactContent {
 }
 
 export interface EventsContent {
+  sectionLabel: string;
+  ctaLabel: string;
   events: ADFEvent[];
 }
 
