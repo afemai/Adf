@@ -66,8 +66,12 @@ export default function ContentEditor({
   const [saving, setSaving] = useState(false);
   const [dirty, setDirty] = useState(false);
 
-  const setValue = (path: string, value: unknown) => {
-    setData((d) => setAt(d, path, value));
+  const setValue = (path: string, valueOrFn: unknown | ((current: unknown) => unknown)) => {
+    setData((d) => {
+      const current = getAt(d, path);
+      const value = typeof valueOrFn === "function" ? (valueOrFn as (c: unknown) => unknown)(current) : valueOrFn;
+      return setAt(d, path, value);
+    });
     setDirty(true);
   };
 
@@ -133,7 +137,7 @@ export default function ContentEditor({
                     help={field.help}
                     items={(value as Array<Record<string, unknown>>) ?? []}
                     itemFields={field.itemFields}
-                    onChange={(items) => setValue(`${section.path}.${field.key}`, items)}
+                    onChange={(fn) => setValue(`${section.path}.${field.key}`, fn)}
                   />
                 );
               }

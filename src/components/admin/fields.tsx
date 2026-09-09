@@ -144,26 +144,34 @@ export function ArrayEditor({
   help?: string;
   items: Array<Record<string, unknown>>;
   itemFields: FieldDef[];
-  onChange: (items: Array<Record<string, unknown>>) => void;
+  onChange: (fn: (current: Array<Record<string, unknown>>) => Array<Record<string, unknown>>) => void;
 }) {
   const isStringItems = items.length > 0 && items.every((it) => typeof it === "string");
   const itemsNorm: Array<Record<string, unknown>> = isStringItems
     ? items.map((s) => ({ value: String(s) }))
     : items;
 
-  const emit = (next: Array<Record<string, unknown>>) =>
-    onChange((isStringItems ? next.map((o) => String(o.value ?? "")) : next) as typeof items);
+  // Every mutation passes a TRANSFORM FUNCTION to onChange, so rapid clicks
+  // (multi-step reorder, typing + upload) always chain off the LATEST array —
+  // no stale closures, no lost updates.
+  const emit = (fn: (current: Array<Record<string, unknown>>) => Array<Record<string, unknown>>) =>
+    onChange((current: Array<Record<string, unknown>>) => {
+      const curNorm = isStringItems ? current.map((s) => ({ value: String(s) })) : current;
+      const next = fn(curNorm);
+      return (isStringItems ? next.map((o) => String(o.value ?? "")) : next) as Array<Record<string, unknown>>;
+    });
 
   const update = (index: number, key: string, value: unknown) =>
-    emit(itemsNorm.map((it, i) => (i === index ? { ...it, [key]: value } : it)));
-  const remove = (index: number) => emit(itemsNorm.filter((_, i) => i !== index));
-  const move = (index: number, dir: -1 | 1) => {
-    const next = [...itemsNorm];
-    const target = index + dir;
-    if (target < 0 || target >= next.length) return;
-    [next[index], next[target]] = [next[target], next[index]];
-    emit(next);
-  };
+    emit((cur) => cur.map((it, i) => (i === index ? { ...it, [key]: value } : it)));
+  const remove = (index: number) => emit((cur) => cur.filter((_, i) => i !== index));
+  const move = (index: number, dir: -1 | 1) =>
+    emit((cur) => {
+      const next = [...cur];
+      const target = index + dir;
+      if (target < 0 || target >= next.length) return cur;
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    });
   const add = () => {
     const blank: Record<string, unknown> = {};
     for (const f of itemFields) {
@@ -172,7 +180,7 @@ export function ArrayEditor({
       else if (f.type === "number") blank[f.key] = 0;
       else blank[f.key] = "";
     }
-    emit([...itemsNorm, blank]);
+    emit((cur) => [...cur, blank]);
   };
 
   return (
