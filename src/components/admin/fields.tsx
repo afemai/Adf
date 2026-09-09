@@ -180,6 +180,8 @@ export function ArrayEditor({
       else if (f.type === "number") blank[f.key] = 0;
       else blank[f.key] = "";
     }
+    // Assign a unique id so React keys stay stable across reorders
+    if (itemFields.some((f) => f.key === "id")) blank.id = `new-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     emit((cur) => [...cur, blank]);
   };
 
